@@ -336,6 +336,7 @@ footer {
   .section { padding: 56px 20px; }
   .features-grid { grid-template-columns: 1fr; }
   .functies-layout { grid-template-columns: 1fr; gap: 32px; }
+  .talen-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .contact-grid { grid-template-columns: 1fr; gap: 40px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
   .footer-top { flex-direction: column; }
