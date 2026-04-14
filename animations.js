@@ -5,6 +5,25 @@
 (function () {
   'use strict';
 
+  /* ── 0. Intro: cinematische binnenkomer ─────────────────────── */
+  const intro = document.getElementById('intro');
+  if (intro) {
+    // Scroll blokkeren tijdens intro
+    document.body.style.overflow = 'hidden';
+
+    const dismiss = () => {
+      intro.classList.add('intro-exit');
+      document.body.style.overflow = '';
+      setTimeout(() => intro.remove(), 1050);
+    };
+
+    // Na 2.4s automatisch weggaan
+    const timer = setTimeout(dismiss, 2400);
+
+    // Klikken versnelt de intro
+    intro.addEventListener('click', () => { clearTimeout(timer); dismiss(); });
+  }
+
   /* ── 1. Nav: schaduw bij scrollen ─────────────────────────── */
   const nav = document.querySelector('.nav');
   if (nav) {

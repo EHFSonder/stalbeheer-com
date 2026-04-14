@@ -428,3 +428,72 @@ footer {
     transform: none !important;
   }
 }
+
+
+/* ============================================================
+   INTRO — Cinematische binnenkomer bij laden
+   ============================================================ */
+#intro {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--green-dark);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0;
+  pointer-events: all;
+}
+#intro.intro-exit {
+  transform: translateY(-100%);
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.intro-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  text-align: center;
+}
+.intro-mark {
+  width: 80px; height: 80px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 22px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  animation: introMark 0.7s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
+}
+.intro-word {
+  font-size: 32px; font-weight: 900; letter-spacing: -0.04em;
+  color: white;
+  opacity: 0;
+  animation: introSlideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.45s forwards;
+}
+.intro-word span { color: var(--amber); }
+.intro-tag {
+  font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.4);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: introSlideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.65s forwards;
+}
+.intro-bar {
+  width: 40px; height: 2px;
+  background: var(--amber);
+  border-radius: 2px;
+  margin-top: 4px;
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: introBar 0.8s cubic-bezier(0.16,1,0.3,1) 0.85s forwards;
+}
+
+@keyframes introMark {
+  from { opacity: 0; transform: scale(0.6) rotate(-8deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes introSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes introBar {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* ── LOGO SVG ──────────────────────────────────────────────── */
+.logo-svg { display: block; }
+.nav-logo-mark { padding: 0; overflow: hidden; }
