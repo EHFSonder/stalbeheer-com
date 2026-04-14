@@ -48,7 +48,11 @@
           ✓ Bedankt voor uw aanvraag! Wij nemen binnen één werkdag contact met u op.
         </div>
 
-        <form id="contact-form" action="https://formspree.io/f/VERVANG_MET_UW_ID" method="POST" onsubmit="handleSubmit(event)">
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="access_key" value="eb0ae56d-5551-4cea-ad42-a2b778645ca0">
+          <input type="hidden" name="subject" value="Nieuwe demo-aanvraag — Stalbeheer">
+          <input type="hidden" name="from_name" value="Stalbeheer Website">
+          <input type="checkbox" name="botcheck" style="display:none">
           <div class="form-row">
             <div class="form-group">
               <label for="naam">Naam *</label>
@@ -189,21 +193,32 @@
 
 <script src="animations.js"></script>
 <script>
-function handleSubmit(e) {
-  // Formspree handelt de submit af — toon bevestiging na verzenden
-  // Als Formspree nog niet is ingesteld, toon alvast de bevestiging
+async function handleSubmit(e) {
+  e.preventDefault();
   const form = document.getElementById('contact-form');
+  const btn = form.querySelector('button[type="submit"]');
   const msg = document.getElementById('success-msg');
-  if (form.action.includes('VERVANG_MET_UW_ID')) {
-    e.preventDefault();
-    form.style.display = 'none';
-    msg.style.display = 'block';
-    return;
+  btn.disabled = true;
+  btn.textContent = 'Bezig met verzenden...';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(form)
+    });
+    const data = await res.json();
+    if (data.success) {
+      form.style.display = 'none';
+      msg.style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Demo aanvragen →';
+      alert('Er is iets misgegaan. Probeer het opnieuw of stuur een e-mail.');
+    }
+  } catch {
+    btn.disabled = false;
+    btn.textContent = 'Demo aanvragen →';
+    alert('Er is iets misgegaan. Controleer uw internetverbinding.');
   }
-  setTimeout(() => {
-    form.style.display = 'none';
-    msg.style.display = 'block';
-  }, 500);
 }
 </script>
 
