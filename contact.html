@@ -31,9 +31,9 @@
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <div class="section-eyebrow" style="color:rgba(255,255,255,.6);margin-bottom:10px">Contact</div>
-    <h1>Demo aanvragen</h1>
-    <p>Vul het formulier in en wij nemen binnen één werkdag contact met u op voor een persoonlijke demonstratie.</p>
+    <div class="section-eyebrow" data-hero style="color:rgba(255,255,255,.6);margin-bottom:10px">Contact</div>
+    <h1 data-hero>Demo aanvragen</h1>
+    <p data-hero>Vul het formulier in en wij nemen binnen één werkdag contact met u op voor een persoonlijke demonstratie.</p>
   </div>
 </section>
 
@@ -43,7 +43,7 @@
     <div class="contact-grid">
 
       <!-- FORMULIER -->
-      <div>
+      <div data-anim>
         <div id="success-msg" class="success-msg">
           ✓ Bedankt voor uw aanvraag! Wij nemen binnen één werkdag contact met u op.
         </div>
@@ -95,7 +95,7 @@
       </div>
 
       <!-- CONTACT INFO -->
-      <div class="contact-info">
+      <div class="contact-info" data-anim="scale">
         <div style="margin-bottom:32px">
           <h2 style="font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px">Hoe werkt een demo?</h2>
           <p style="font-size:15px;color:var(--text-muted);line-height:1.65">
@@ -187,6 +187,7 @@
   </div>
 </footer>
 
+<script src="animations.js"></script>
 <script>
 function handleSubmit(e) {
   // Formspree handelt de submit af — toon bevestiging na verzenden
