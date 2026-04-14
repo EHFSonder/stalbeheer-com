@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &amp; Demo aanvragen — Stalbeheer</title>
+<meta name="description" content="Vraag een vrijblijvende demo aan van Stalbeheer. Wij laten u zien hoe de app werkt voor uw varkensbedrijf.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">🐷</div>
+      <div class="nav-logo-text">stal<span>beheer</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="functies.html">Functies</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-primary btn-sm">Demo aanvragen →</a>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-eyebrow" style="color:rgba(255,255,255,.6);margin-bottom:10px">Contact</div>
+    <h1>Demo aanvragen</h1>
+    <p>Vul het formulier in en wij nemen binnen één werkdag contact met u op voor een persoonlijke demonstratie.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTIE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- FORMULIER -->
+      <div>
+        <div id="success-msg" class="success-msg">
+          ✓ Bedankt voor uw aanvraag! Wij nemen binnen één werkdag contact met u op.
+        </div>
+
+        <form id="contact-form" action="https://formspree.io/f/VERVANG_MET_UW_ID" method="POST" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="naam">Naam *</label>
+              <input type="text" id="naam" name="naam" placeholder="Jan de Vries" required>
+            </div>
+            <div class="form-group">
+              <label for="bedrijf">Bedrijfsnaam</label>
+              <input type="text" id="bedrijf" name="bedrijf" placeholder="Varkenshouderij De Vries">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mailadres *</label>
+              <input type="email" id="email" name="email" placeholder="jan@voorbeeld.nl" required>
+            </div>
+            <div class="form-group">
+              <label for="telefoon">Telefoonnummer</label>
+              <input type="tel" id="telefoon" name="telefoon" placeholder="06 12 34 56 78">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="grootte">Hoeveel vleesvarkens heeft u (bij benadering)?</label>
+            <select id="grootte" name="grootte">
+              <option value="">— Selecteer —</option>
+              <option value="<500">Minder dan 500</option>
+              <option value="500-1000">500 – 1.000</option>
+              <option value="1000-2500">1.000 – 2.500</option>
+              <option value="2500-5000">2.500 – 5.000</option>
+              <option value=">5000">Meer dan 5.000</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bericht">Vraag of toelichting (optioneel)</label>
+            <textarea id="bericht" name="bericht" placeholder="Vertel gerust wat u nu gebruikt en wat u wilt verbeteren..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center">
+            Demo aanvragen →
+          </button>
+          <p style="font-size:13px;color:var(--text-muted);margin-top:12px;text-align:center">
+            Vrijblijvend · Geen verplichtingen · Wij nemen contact met u op
+          </p>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+        <div style="margin-bottom:32px">
+          <h2 style="font-size:22px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px">Hoe werkt een demo?</h2>
+          <p style="font-size:15px;color:var(--text-muted);line-height:1.65">
+            Na uw aanvraag nemen wij telefonisch of per e-mail contact op om een moment af te spreken. De demo duurt ongeveer 30 minuten en kan op locatie of online plaatsvinden.
+          </p>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">📞</div>
+          <div>
+            <div class="contact-info-title">Bellen mag ook</div>
+            <div class="contact-info-text">Wij zijn bereikbaar op werkdagen tussen 8:00 en 17:00 uur. Bel voor een snelle vraag of om direct een afspraak te maken.</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">⏱️</div>
+          <div>
+            <div class="contact-info-title">Snel ingericht</div>
+            <div class="contact-info-text">Na akkoord richten wij uw account in met uw afdelingen, silo's en gebruikers. Binnen één dag kunt u beginnen.</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">💶</div>
+          <div>
+            <div class="contact-info-title">Prijs op aanvraag</div>
+            <div class="contact-info-text">De prijs is afhankelijk van uw bedrijfsgrootte en wensen. Geen abonnementen met kleine lettertjes — wij maken een eerlijk voorstel op maat.</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="contact-info-icon">🔒</div>
+          <div>
+            <div class="contact-info-title">Uw data is veilig</div>
+            <div class="contact-info-text">Stalbeheer draait op beveiligde cloud-infrastructuur. Uw bedrijfsdata is van u en wordt nooit gedeeld met derden.</div>
+          </div>
+        </div>
+
+        <!-- Feature samenvatting -->
+        <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:16px;padding:24px;margin-top:8px">
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-400);margin-bottom:16px">Wat zit er in</div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Groepen &amp; rondes beheer</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Voerplanning &amp; silo-voorraad</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Taken &amp; dagelijkse checklist</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Medicatie &amp; wachttijden</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Afleveringen &amp; verplaatsingen</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Resultaten &amp; voederconversie</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Team-berichten &amp; logboek</div>
+            <div style="font-size:14px;display:flex;align-items:center;gap:9px"><span style="color:var(--green);font-weight:800">✓</span> Werkt op elke telefoon</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-brand-mark">🐷</div>
+          <div class="footer-brand-name">stalbeheer</div>
+        </div>
+        <div class="footer-desc">De app voor de moderne varkenshouder. Van inkoop tot aflevering — alles in één overzicht.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <ul>
+            <li><a href="functies.html">Functies</a></li>
+            <li><a href="contact.html">Demo aanvragen</a></li>
+            <li><a href="contact.html">Prijzen</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Bedrijf</div>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Stalbeheer · Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  // Formspree handelt de submit af — toon bevestiging na verzenden
+  // Als Formspree nog niet is ingesteld, toon alvast de bevestiging
+  const form = document.getElementById('contact-form');
+  const msg = document.getElementById('success-msg');
+  if (form.action.includes('VERVANG_MET_UW_ID')) {
+    e.preventDefault();
+    form.style.display = 'none';
+    msg.style.display = 'block';
+    return;
+  }
+  setTimeout(() => {
+    form.style.display = 'none';
+    msg.style.display = 'block';
+  }, 500);
+}
+</script>
+
+</body>
+</html>
