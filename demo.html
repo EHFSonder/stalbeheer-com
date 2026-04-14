@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo — Stalbeheer</title>
+<meta name="description" content="Probeer Stalbeheer zelf. Verken de interactieve demo met voorbeeldgegevens — geen aanmelding nodig.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.demo-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:860px){.demo-layout{grid-template-columns:1fr;gap:48px}}
+
+/* Phone mockup */
+.phone-wrap{display:flex;justify-content:center}
+.phone{
+  width:300px;
+  background:#fff;
+  border-radius:40px;
+  border:10px solid #1a1a1a;
+  box-shadow:0 40px 80px rgba(0,0,0,.25),0 0 0 2px #333;
+  overflow:hidden;
+  position:relative;
+}
+.phone-notch{height:28px;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.phone-notch-pill{width:80px;height:12px;background:#111;border-radius:99px}
+.phone-inner{padding:0}
+
+/* Mini app UI inside phone */
+.ph-banner{background:#f59e0b;color:#78350f;font-size:10px;font-weight:700;padding:5px 10px;text-align:center}
+.ph-header{background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 12px;display:flex;justify-content:space-between;align-items:flex-start}
+.ph-title{font-size:15px;font-weight:900;letter-spacing:-.03em}
+.ph-sub{font-size:9px;color:#6b7280;margin-top:1px}
+.ph-logo{width:26px;height:26px;background:#1a5c3a;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;letter-spacing:-.04em}
+.ph-content{padding:10px;display:flex;flex-direction:column;gap:8px;background:#f0f0f2}
+.ph-alert{background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:9px 10px;display:flex;gap:7px;align-items:flex-start}
+.ph-alert-icon{font-size:13px}
+.ph-alert-title{font-size:10px;font-weight:700;color:#dc2626}
+.ph-alert-sub{font-size:9px;color:#6b7280;margin-top:1px}
+.ph-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.ph-stat{background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.ph-stat-val{font-size:16px;font-weight:900;letter-spacing:-.04em;color:#1a5c3a}
+.ph-stat-lbl{font-size:8px;color:#6b7280;font-weight:500;margin-top:1px}
+.ph-card{background:#fff;border-radius:10px;padding:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.ph-card-title{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6b7280;margin-bottom:7px}
+.ph-task{display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;font-size:10px}
+.ph-task:last-child{border-bottom:none}
+.ph-check{width:14px;height:14px;border-radius:50%;border:1.5px solid #e5e7eb;flex-shrink:0}
+.ph-check.done{background:#1a5c3a;border-color:#1a5c3a}
+.ph-task.done{opacity:.5;text-decoration:line-through}
+.ph-nav{background:#fff;border-top:1px solid #e5e7eb;display:grid;grid-template-columns:repeat(4,1fr);height:48px}
+.ph-nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:8px;color:#6b7280;font-weight:500}
+.ph-nav-item.active{color:#1a5c3a}
+.ph-nav-icon{font-size:14px}
+
+/* Right info */
+.demo-info{display:flex;flex-direction:column;gap:24px}
+.demo-features{list-style:none;display:flex;flex-direction:column;gap:12px}
+.demo-features li{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500}
+.demo-features li .fi{font-size:18px;flex-shrink:0;margin-top:1px}
+.demo-features li strong{display:block;font-weight:700}
+.demo-features li span{color:var(--gray-500,#6b7280);font-size:14px;font-weight:400}
+.demo-cta-row{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+
+/* Screens strip */
+.screens-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+@media(max-width:640px){.screens-strip{grid-template-columns:repeat(2,1fr)}}
+.screen-card{background:#fff;border-radius:16px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.screen-icon{font-size:32px;margin-bottom:10px}
+.screen-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.screen-desc{font-size:13px;color:#6b7280;line-height:1.45}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      <div class="nav-logo-text">stal<span>beheer</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="functies.html">Functies</a></li>
+      <li><a href="demo.html" class="active">Demo</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="contact.html" class="btn btn-primary btn-sm">Demo aanvragen →</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="section-eyebrow" data-hero style="color:rgba(255,255,255,.6);margin-bottom:10px">Interactieve demo</div>
+    <h1 data-hero>Probeer Stalbeheer zelf</h1>
+    <p data-hero>Verken de app met realistische voorbeeldgegevens. Geen aanmelding nodig — gewoon klikken.</p>
+    <div data-hero style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="demo-app.html" class="btn btn-amber btn-lg">Open demo →</a>
+      <a href="contact.html" class="btn btn-outline-white btn-lg">Persoonlijke demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SECTIE -->
+<section class="section">
+  <div class="section-inner">
+    <div class="demo-layout" data-anim>
+
+      <!-- Phone mockup -->
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-notch"><div class="phone-notch-pill"></div></div>
+          <div class="phone-inner">
+            <div class="ph-banner">🎯 Demo met voorbeelddata</div>
+            <div class="ph-header">
+              <div><div class="ph-title">Dashboard</div><div class="ph-sub">Demo Varkenshouderij BV</div></div>
+              <div class="ph-logo">S</div>
+            </div>
+            <div class="ph-content">
+              <div class="ph-alert">
+                <div class="ph-alert-icon">🚨</div>
+                <div>
+                  <div class="ph-alert-title">Silo 3 bijna leeg — 4 dagen</div>
+                  <div class="ph-alert-sub">1.680 kg · ~410 kg/dag · Afd 3 & 4</div>
+                </div>
+              </div>
+              <div class="ph-stats">
+                <div class="ph-stat"><div class="ph-stat-val">555</div><div class="ph-stat-lbl">Dieren</div></div>
+                <div class="ph-stat"><div class="ph-stat-val">3</div><div class="ph-stat-lbl">Rondes</div></div>
+                <div class="ph-stat"><div class="ph-stat-val">2</div><div class="ph-stat-lbl">Taken open</div></div>
+              </div>
+              <div class="ph-card">
+                <div class="ph-card-title">Taken vandaag</div>
+                <div class="ph-task done"><div class="ph-check done"></div>🌾 Voeren — alle afdelingen</div>
+                <div class="ph-task done"><div class="ph-check done"></div>💧 Water — Afd 4</div>
+                <div class="ph-task"><div class="ph-check"></div>👁 Controle — Afd 1 & 2</div>
+                <div class="ph-task"><div class="ph-check"></div>⚖️ Wegen — Afd 3</div>
+              </div>
+            </div>
+            <div class="ph-nav">
+              <div class="ph-nav-item active"><div class="ph-nav-icon">🏠</div>Dashboard</div>
+              <div class="ph-nav-item"><div class="ph-nav-icon">✅</div>Taken</div>
+              <div class="ph-nav-item"><div class="ph-nav-icon">🐷</div>Groepen</div>
+              <div class="ph-nav-item"><div class="ph-nav-icon">🌾</div>Voerplan</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="demo-info">
+        <div>
+          <div class="section-eyebrow" style="margin-bottom:12px">Wat zit er in de demo</div>
+          <h2 style="font-size:32px;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px">Vier pagina's,<br>volledig interactief</h2>
+          <p style="font-size:16px;color:#6b7280;line-height:1.65">Klik door de app, vink taken af en bekijk hoe voervoorraden en groepen worden bijgehouden. Alles werkt — met echte Nederlandse varkenshouderijdata.</p>
+        </div>
+        <ul class="demo-features">
+          <li><span class="fi">🏠</span><div><strong>Dashboard</strong><span>Realtime overzicht met silo-alerting, slachtagenda en open taken</span></div></li>
+          <li><span class="fi">✅</span><div><strong>Taken</strong><span>Afvinken per medewerker, notities, en taken voor morgen</span></div></li>
+          <li><span class="fi">🐷</span><div><strong>Groepen</strong><span>3 actieve rondes met week, gewicht, uitval en medicatie-badge</span></div></li>
+          <li><span class="fi">🌾</span><div><strong>Voerplanning</strong><span>Voerschema per afdeling gekoppeld aan silo-voorraad met resterende dagen</span></div></li>
+        </ul>
+        <div class="demo-cta-row">
+          <a href="demo-app.html" class="btn btn-primary btn-lg">Open demo →</a>
+          <a href="contact.html" style="font-size:14px;color:#6b7280;font-weight:500">Wilt u een demo op maat? <strong style="color:#1a5c3a">Neem contact op →</strong></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCREENS STRIP -->
+<section class="section" style="background:#f8f9fa;padding-top:48px;padding-bottom:48px">
+  <div class="section-inner">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="section-eyebrow" style="margin-bottom:8px">Wat u kunt uitproberen</div>
+      <h2 style="font-size:28px;font-weight:900;letter-spacing:-.03em">Alles wat de app kan</h2>
+    </div>
+    <div class="screens-strip" data-stagger>
+      <div class="screen-card">
+        <div class="screen-icon">🚨</div>
+        <div class="screen-name">Silo-alerting</div>
+        <div class="screen-desc">Silo 3 staat op kritiek — zie hoe het dashboard direct waarschuwt met resterende dagen</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-icon">☑️</div>
+        <div class="screen-name">Taken afvinken</div>
+        <div class="screen-desc">Tik op een taak om hem af te ronden. De badge op de nav past direct mee</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-icon">📅</div>
+        <div class="screen-name">Slachtagenda</div>
+        <div class="screen-desc">Ronde 1-2026 wordt over 14 dagen geslacht — overzichtelijk in rood op het dashboard</div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-icon">💊</div>
+        <div class="screen-name">Medicatie-badge</div>
+        <div class="screen-desc">Groep Afd 3 heeft Draxxin — wachttijd en vrijgavedatum direct zichtbaar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green-dark,#0f3d27);padding:64px 0">
+  <div class="section-inner" style="text-align:center">
+    <h2 style="font-size:32px;font-weight:900;color:white;letter-spacing:-.03em;margin-bottom:12px">Klaar voor uw eigen stal?</h2>
+    <p style="font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px">Wij richten uw account in met uw afdelingen, silos en medewerkers. Binnen één dag kunt u beginnen.</p>
+    <a href="contact.html" class="btn btn-amber btn-lg">Demo aanvragen →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-brand-mark">S</div>
+          <div class="footer-brand-name">stalbeheer</div>
+        </div>
+        <div class="footer-desc">De app voor de moderne varkenshouder. Van inkoop tot aflevering — alles in één overzicht.</div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <ul>
+            <li><a href="functies.html">Functies</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="contact.html">Demo aanvragen</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Bedrijf</div>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Stalbeheer · Alle rechten voorbehouden</div>
+  </div>
+</footer>
+
+<script src="animations.js"></script>
+</body>
+</html>
