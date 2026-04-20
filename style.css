@@ -328,9 +328,67 @@ footer {
 .footer-col a:hover { color: white; }
 .footer-bottom { font-size: 13px; text-align: center; }
 
+/* ── HAMBURGER / MOBILE NAV ──────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 7px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  transition: background .15s;
+}
+.nav-hamburger:hover { background: var(--gray-100); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gray-700);
+  border-radius: 2px;
+  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 66px; left: 0; right: 0;
+  background: white;
+  border-bottom: 1px solid var(--gray-200);
+  box-shadow: 0 8px 24px rgba(0,0,0,.10);
+  z-index: 199;
+  flex-direction: column;
+  padding: 12px 16px 16px;
+}
+.mobile-nav a {
+  display: block;
+  padding: 13px 14px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--gray-700);
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color .15s, background .15s;
+}
+.mobile-nav a:hover, .mobile-nav a.active { color: var(--green); background: var(--green-light); }
+.mobile-nav-cta {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--gray-100);
+}
+.mobile-nav-cta .btn { width: 100%; justify-content: center; }
+
 /* ── RESPONSIVE ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links, .nav-right { display: none; }
+  .nav-hamburger { display: flex; }
+  .mobile-nav.open { display: flex; }
   .hero { padding: 64px 20px 52px; }
   .hero-stats { gap: 28px; }
   .section { padding: 56px 20px; }
@@ -344,6 +402,39 @@ footer {
   .cta-banner { padding: 56px 20px; }
 }
 
+
+/* ── TALEN PAGINA ────────────────────────────────────────── */
+.lang-list {
+  display: flex; flex-direction: column;
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin-top: 48px;
+}
+.lang-row {
+  display: grid; grid-template-columns: 56px 1fr auto;
+  align-items: center; gap: 24px;
+  padding: 22px 4px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.lang-code {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.45);
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+.lang-name {
+  font-size: 22px; font-weight: 600; letter-spacing: -.02em;
+  color: rgba(255,255,255,.92);
+}
+.lang-name.muted { font-size: 16px; color: rgba(255,255,255,.45); }
+.lang-status {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: rgba(255,255,255,.45);
+}
+.lang-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0;
+}
+.lang-dot.muted { background: rgba(255,255,255,.25); }
 
 /* ============================================================
    ANIMATIES — Apple-stijl scroll-triggered + hero entrance
