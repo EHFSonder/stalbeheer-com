@@ -2,184 +2,40 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Talen — Stalbeheer</title>
-<meta name="description" content="Stalbeheer werkt in de taal die uw medewerkers nodig hebben. Beschikbaar in Nederlands, Engels, Duits, Frans, Pools, Roemeens en Bulgaars.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div data-nav></div>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">S</div>
-      <div class="nav-logo-text">stal<span>beheer</span></div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="functies.html">Functies</a></li>
-      <li><a href="talen.html" class="active">Talen</a></li>
-      <li><a href="demo.html">Demo</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="contact.html" class="btn btn-primary btn-sm">Demo aanvragen →</a>
-    </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu openen">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-<nav class="mobile-nav" id="mobile-nav">
-  <a href="index.html">Home</a>
-  <a href="functies.html">Functies</a>
-  <a href="talen.html" class="active">Talen</a>
-  <a href="demo.html">Demo</a>
-  <a href="contact.html">Contact</a>
-  <div class="mobile-nav-cta">
-    <a href="contact.html" class="btn btn-primary">Demo aanvragen →</a>
-  </div>
-</nav>
-
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="section-eyebrow" data-hero style="color:rgba(255,255,255,.6);margin-bottom:10px">Meertalig</div>
-    <h1 data-hero>De app werkt in de taal<br>die u nodig heeft.</h1>
-    <p data-hero>Elke gebruiker kiest zijn eigen taal bij het inloggen. Taken, meldingen en checklists verschijnen direct in de gekozen taal — zonder dat u daar iets voor hoeft in te stellen. Uw eigen administratie blijft altijd in het Nederlands.</p>
-  </div>
-</section>
-
-<!-- TALEN TABEL -->
-<section class="section bg-dark" style="padding-top:64px;padding-bottom:80px">
+<section class="section on-ink" style="padding-top:120px">
   <div class="section-inner">
-    <div data-anim>
-      <div class="section-eyebrow" style="color:var(--green);margin-bottom:12px">Beschikbare talen</div>
-      <h2 style="font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.03em;line-height:1.15;color:rgba(255,255,255,.95);max-width:580px">
-        Één app, zeven talen — en groeiende.
-      </h2>
-    </div>
-
-    <div class="lang-list" data-stagger>
-      <div class="lang-row">
-        <div class="lang-code">NL</div>
-        <div class="lang-name">Nederlands</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-anim>Meertalig</div>
+        <h2 data-anim>De app werkt in de taal<br>die u nodig heeft.</h2>
       </div>
-      <div class="lang-row">
-        <div class="lang-code">EN</div>
-        <div class="lang-name">English</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code">DE</div>
-        <div class="lang-name">Deutsch</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code">FR</div>
-        <div class="lang-name">Français</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code">PL</div>
-        <div class="lang-name">Polski</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code">RO</div>
-        <div class="lang-name">Română</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code">BG</div>
-        <div class="lang-name">Български</div>
-        <div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div>
-      </div>
-      <div class="lang-row">
-        <div class="lang-code" style="color:rgba(255,255,255,.25);font-size:18px">+</div>
-        <div class="lang-name muted">Andere taal nodig?</div>
-        <div class="lang-status"><span class="lang-dot muted"></span>Aanvraagbaar</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HOE HET WERKT -->
-<section class="section bg-gray">
-  <div class="section-inner">
-    <div style="max-width:640px;margin:0 auto;text-align:center" data-anim>
-      <div class="section-eyebrow" style="margin-bottom:12px">Hoe het werkt</div>
-      <h2 class="section-title" style="font-size:clamp(26px,3.5vw,36px)">Taal instellen in één stap</h2>
-      <p style="font-size:16px;color:var(--gray-500,#6b7280);line-height:1.65;margin-top:16px">
-        Elke medewerker kiest zijn taal bij het inloggen. Alle taken, checklists en meldingen worden direct in die taal weergegeven. U hoeft als beheerder niets apart in te stellen — de app past zich automatisch aan.
+      <p class="intro" data-anim style="color:rgba(245,241,232,.65)">
+        Elke gebruiker kiest zijn eigen taal bij het inloggen. Taken, meldingen en checklists verschijnen direct in de gekozen taal — zonder dat u daar iets voor hoeft in te stellen. Uw eigen administratie blijft altijd in het Nederlands.
       </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px" data-stagger>
-      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
-        <div style="font-size:28px;margin-bottom:12px">1</div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:8px">Medewerker logt in</div>
-        <p style="font-size:14px;color:var(--gray-500,#6b7280);line-height:1.6">Bij het eerste gebruik kiest de medewerker zijn voorkeurstaal.</p>
-      </div>
-      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
-        <div style="font-size:28px;margin-bottom:12px">2</div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:8px">App schakelt om</div>
-        <p style="font-size:14px;color:var(--gray-500,#6b7280);line-height:1.6">Alle schermen, taken en berichten verschijnen direct in de gekozen taal.</p>
-      </div>
-      <div style="background:white;border-radius:16px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)">
-        <div style="font-size:28px;margin-bottom:12px">3</div>
-        <div style="font-weight:700;font-size:16px;margin-bottom:8px">Uw administratie blijft NL</div>
-        <p style="font-size:14px;color:var(--gray-500,#6b7280);line-height:1.6">Rapporten en bedrijfsgegevens blijven altijd in het Nederlands voor de eigenaar.</p>
-      </div>
+    <div class="lang-list" data-stagger>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">NL</div><div class="lang-native">Nederlands</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">EN</div><div class="lang-native">English</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">DE</div><div class="lang-native">Deutsch</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">FR</div><div class="lang-native">Français</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">PL</div><div class="lang-native">Polski</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">RO</div><div class="lang-native">Română</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.9)">BG</div><div class="lang-native">Български</div><div class="lang-status"><span class="lang-dot"></span>Beschikbaar</div></div>
+      <div class="lang-row"><div class="lang-flag" style="font-size:15px;font-family:var(--display);color:rgba(245,241,232,.5)">+</div><div class="lang-native" style="font-size:18px;color:rgba(245,241,232,.55)">Andere taal nodig?</div><div class="lang-status"><span class="lang-dot" style="background:rgba(245,241,232,.3)"></span>Aanvraagbaar</div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-banner">
-  <h2 data-anim>Klaar om te starten?</h2>
-  <p data-anim>Vraag een vrijblijvende demo aan en ontdek hoe Stalbeheer werkt voor uw bedrijf.</p>
-  <div class="hero-cta">
-    <a href="contact.html" class="btn btn-amber btn-lg">Demo aanvragen →</a>
-    <a href="functies.html" class="btn btn-outline-white btn-lg">Alle functies bekijken</a>
-  </div>
-  <p class="hero-note">Geen verplichtingen · Persoonlijke demonstratie · Snel ingericht</p>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div>
-        <div class="footer-brand-logo">
-          <div class="footer-brand-mark">S</div>
-          <div class="footer-brand-name">stalbeheer</div>
-        </div>
-        <div class="footer-desc">De app voor de moderne varkenshouder. Van inkoop tot aflevering — alles in één overzicht.</div>
-      </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Product</div>
-          <ul>
-            <li><a href="functies.html">Functies</a></li>
-            <li><a href="talen.html">Talen</a></li>
-            <li><a href="contact.html">Demo aanvragen</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Bedrijf</div>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 Stalbeheer · Alle rechten voorbehouden</div>
-  </div>
-</footer>
-
-<script src="animations.js"></script>
+<div data-footer></div>
+<script src="site.js?v=2"></script>
 </body>
 </html>

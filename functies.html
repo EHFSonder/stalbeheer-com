@@ -2,355 +2,106 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Functies — Stalbeheer</title>
-<meta name="description" content="Bekijk alle functies van Stalbeheer: groepen, voerplanning, silo-voorraad, taken, medicatie, afleveringen en meer.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div data-nav></div>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">S</div>
-      <div class="nav-logo-text">stal<span>beheer</span></div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="functies.html" class="active">Functies</a></li>
-      <li><a href="talen.html">Talen</a></li>
-      <li><a href="demo.html">Demo</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="contact.html" class="btn btn-primary btn-sm">Demo aanvragen →</a>
-    </div>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu openen">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-<nav class="mobile-nav" id="mobile-nav">
-  <a href="index.html">Home</a>
-  <a href="functies.html" class="active">Functies</a>
-  <a href="talen.html">Talen</a>
-  <a href="demo.html">Demo</a>
-  <a href="contact.html">Contact</a>
-  <div class="mobile-nav-cta">
-    <a href="contact.html" class="btn btn-primary">Demo aanvragen →</a>
-  </div>
-</nav>
-
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="section-eyebrow" data-hero style="color:rgba(255,255,255,.6);margin-bottom:10px">Functies</div>
-    <h1 data-hero>Alles wat uw stal<br>nodig heeft</h1>
-    <p data-hero>Stalbeheer bundelt alle dagelijkse registraties in één overzichtelijke app — gemaakt voor hoe varkenshouders écht werken.</p>
-  </div>
-</section>
-
-<!-- FUNCTIES INHOUD -->
 <section class="section">
   <div class="section-inner">
-
-    <!-- 1. Groepen & rondes -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">🐷</div>
-          <div class="section-eyebrow">Dierregistratie</div>
-          <h2 class="section-title" style="font-size:28px">Groepen &amp; rondes</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Van de dag van inkoop tot de dag van aflevering houdt Stalbeheer alles bij per groep. U ziet altijd hoeveel dieren er levend zijn, wat de bezettingsgraad is en wanneer de groep naar verwachting klaar is voor de slacht.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Inkoopdatum</span>
-            <span class="functies-badge">Inkoopgewicht</span>
-            <span class="functies-badge">Doelgewicht</span>
-            <span class="functies-badge">Ronde</span>
-            <span class="functies-badge">Afdeling</span>
-            <span class="functies-badge">Groei/dag</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Groepen aanmaken per afdeling en ronde, met leverancier en inkoopgewicht</li>
-            <li>Automatische berekening van levend aantal op basis van sterfte, afleveringen en verplaatsingen</li>
-            <li>Verwachte slachtdatum berekend op basis van groei per dag en doelgewicht</li>
-            <li>Bezettingsgraad per afdeling — groen, oranje of rood op basis van capaciteit</li>
-            <li>Actieve en afgesloten groepen apart inzichtelijk</li>
-            <li>Snel overzicht van alle groepen met levend aantal, gewicht en slachtdatum</li>
-            <li>Saldokaart per groep: alle financiële bewegingen op één kaart</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Voer -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">🌾</div>
-          <div class="section-eyebrow">Voer &amp; Voorraad</div>
-          <h2 class="section-title" style="font-size:28px">Voerplanning &amp; silo-beheer</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Stalbeheer berekent automatisch het dagelijks voerverbruik per silo op basis van uw actieve groepen en het weekschema van uw voerleverancier. Zo weet u altijd hoeveel voer er nog is en wanneer u moet bijbestellen.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Per silo</span>
-            <span class="functies-badge">kg/dag</span>
-            <span class="functies-badge">Resterende dagen</span>
-            <span class="functies-badge">Lege datum</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Voerverbruik per silo automatisch berekend vanuit actieve groepen en levend aantal</li>
-            <li>Resterende dagen voorraad direct zichtbaar per silo</li>
-            <li>Verwachte lege datum per silo (bijv. "vr. 17 apr")</li>
-            <li>Oranje waarschuwing bij minder dan 7 dagen voorraad</li>
-            <li>Rode waarschuwing bij minder dan 3 dagen voorraad — ook zichtbaar op het dashboard</li>
-            <li>Voerschema per groep op basis van het weekschema van uw leverancier</li>
-            <li>Voerwisselingen automatisch gesignaleerd: welke groep wisselt wanneer van voersoort</li>
-            <li>Voerleveringen registreren: besteld, verwachte leverdatum en geleverde hoeveelheid</li>
-            <li>Besteladvies per silo op basis van het verwachte weekverbruik</li>
-            <li>Silo-capaciteit instelbaar voor vulpercentage-weergave</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. Taken -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">✓</div>
-          <div class="section-eyebrow">Dagelijks beheer</div>
-          <h2 class="section-title" style="font-size:28px">Taken &amp; checklists</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Plan uw vaste taken en dagelijkse checklists voor het hele team. Elke medewerker ziet wat er die dag gedaan moet worden en kan taken aftekenen. U ziet in één oogopslag wat er nog open staat.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Voeren</span>
-            <span class="functies-badge">Water</span>
-            <span class="functies-badge">Controle</span>
-            <span class="functies-badge">Wegen</span>
-            <span class="functies-badge">Technische dienst</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Taken aanmaken per afdeling of voor de hele stal</li>
-            <li>Medewerker toewijzen aan een taak</li>
-            <li>Taken aftekenen met één druk op de knop — inclusief tijdstip en naam</li>
-            <li>Dashboard toont hoeveel taken vandaag zijn afgerond</li>
-            <li>Technische dienst-taken apart zichtbaar voor uw monteur</li>
-            <li>Notitie toevoegen aan een taak voor extra context</li>
-            <li>Logboek: alle voltooide activiteiten per dag terugvindbaar</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. Dierenbewegingen -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">🚛</div>
-          <div class="section-eyebrow">Dierenbewegingen</div>
-          <h2 class="section-title" style="font-size:28px">Afleveringen &amp; verplaatsingen</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Registreer afleveringen naar de slacht en verplaatsingen tussen afdelingen snel en foutloos. Het levend aantal per groep wordt automatisch bijgewerkt.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Geslacht → levend gewicht</span>
-            <span class="functies-badge">Per partij</span>
-            <span class="functies-badge">Saldo koppeling</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Aflevering registreren met datum, aantal, leverancier en gewicht per dier</li>
-            <li>Geslacht gewicht automatisch omgerekend naar levend gewicht (× 1,25)</li>
-            <li>Aflevering wordt direct verwerkt in het levend aantal en de saldokaart</li>
-            <li>Verplaatsingen tussen groepen en afdelingen correct bijgehouden</li>
-            <li>Slachtplanning: overzicht van groepen met geplande slachtdatum en resterende dagen</li>
-            <li>Verwacht aflevergewicht instelbaar per groep</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. Gezondheid -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">💉</div>
-          <div class="section-eyebrow">Gezondheid</div>
-          <h2 class="section-title" style="font-size:28px">Medicatie &amp; wachttijden</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Leg medicaties vast per groep en houdt wachttijden bij. Stalbeheer waarschuwt automatisch als een wachttijd is verlopen zodat u nooit een slachttermijn mist.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Startdatum</span>
-            <span class="functies-badge">Einddatum</span>
-            <span class="functies-badge">Wachttijd</span>
-            <span class="functies-badge">Dashboard-melding</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Medicatie vastleggen per groep: middel, dosis, start- en einddatum</li>
-            <li>Wachttijd per medicatie bijhouden</li>
-            <li>Automatische waarschuwing op het dashboard bij verlopen wachttijden</li>
-            <li>Sterfte registreren per groep met datum en oorzaak</li>
-            <li>Wekelijkse telling: handmatige dierentelling per afdeling met verschil-analyse</li>
-            <li>Sterftecijfer per ronde inzichtelijk in het overzichtsscherm</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. Samenwerking -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">💬</div>
-          <div class="section-eyebrow">Team &amp; communicatie</div>
-          <h2 class="section-title" style="font-size:28px">Samenwerken in de stal</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Meerdere medewerkers, één app. Iedereen logt in met een eigen pincode en ziet wat voor hem of haar relevant is. Beheerders hebben toegang tot alle instellingen en data.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">Beheerder</span>
-            <span class="functies-badge">Medewerker</span>
-            <span class="functies-badge">Groepschat</span>
-            <span class="functies-badge">Privéberichten</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Meerdere gebruikers met eigen pincode, naam en rol</li>
-            <li>Beheerders hebben toegang tot alle functies en instellingen</li>
-            <li>Medewerkers kunnen sterfte en medicatie registreren</li>
-            <li>Groepschat: berichten sturen aan het hele team</li>
-            <li>Privéberichten: direct communiceren met een collega</li>
-            <li>Ongelezen badge toont nieuwe berichten direct in de navigatiebalk</li>
-            <li>Logboek: wie heeft wat gedaan en wanneer — altijd terug te vinden</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. Resultaten -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">📊</div>
-          <div class="section-eyebrow">Resultaten</div>
-          <h2 class="section-title" style="font-size:28px">Inzicht na elke ronde</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Als een ronde wordt afgesloten, berekent Stalbeheer automatisch de belangrijkste kengetallen. Vergelijk rondes en stuur bij waar nodig.
-          </p>
-          <div class="functies-icon-row">
-            <span class="functies-badge">FC</span>
-            <span class="functies-badge">Groei/dag</span>
-            <span class="functies-badge">Sterfte %</span>
-            <span class="functies-badge">Voer/dier</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Voederconversie (FC) per ronde berekend op basis van werkelijk voerverbruik</li>
-            <li>Groei per dag per dier (g/dag)</li>
-            <li>Sterftecijfer per ronde in percentage en absolute aantallen</li>
-            <li>Eindgewicht versus doelgewicht — positief of negatief verschil</li>
-            <li>Saldokaart: financieel overzicht van inkoop, voer, medicatie en afleveringen</li>
-            <li>Overzichtsscherm met alle afgesloten groepen en gemiddelde kengetallen</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- 8. Meertalig -->
-    <div class="functies-block">
-      <div class="functies-layout" data-stagger>
-        <div>
-          <div class="feature-icon" style="margin-bottom:16px">🌍</div>
-          <div class="section-eyebrow">Internationaal</div>
-          <h2 class="section-title" style="font-size:28px">De app spreekt de taal van uw medewerkers</h2>
-          <p style="font-size:15px;color:var(--text-muted);line-height:1.65;margin-top:10px">
-            Grote varkensbedrijven werken steeds vaker met internationaal personeel. Stalbeheer ondersteunt meerdere talen, zodat elke medewerker — ongeacht zijn achtergrond — feilloos kan registreren.
-          </p>
-          <div class="functies-icon-row" style="margin-top:16px;flex-wrap:wrap;gap:8px">
-            <span class="functies-badge">🇳🇱 Nederlands</span>
-            <span class="functies-badge">🇵🇱 Polski</span>
-            <span class="functies-badge">🇷🇴 Română</span>
-            <span class="functies-badge">🇩🇪 Deutsch</span>
-            <span class="functies-badge">🇧🇬 Български</span>
-          </div>
-        </div>
-        <div>
-          <ul class="functies-list">
-            <li>Elke medewerker kiest zijn eigen taal bij het inloggen</li>
-            <li>Taken, meldingen en berichten verschijnen direct in de gekozen taal</li>
-            <li>Geen taalbarrière meer bij dagelijkse registraties en checklists</li>
-            <li>Ideaal voor bedrijven met Pools, Roemeens, Bulgaars of Duits personeel</li>
-            <li>De bedrijfsadministratie blijft altijd in het Nederlands voor de eigenaar</li>
-            <li>Schaalbaar: extra talen op aanvraag beschikbaar</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-banner">
-  <h2 data-anim>Alles zien in actie?</h2>
-  <p data-anim>Vraag een persoonlijke demo aan. Wij laten u zien hoe Stalbeheer werkt voor uw bedrijf.</p>
-  <div class="hero-cta">
-    <a href="contact.html" class="btn btn-amber btn-lg">Demo aanvragen →</a>
-  </div>
-  <p class="hero-note">Vrijblijvend · Persoonlijk · Snel ingericht</p>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+    <div class="section-head">
       <div>
-        <div class="footer-brand-logo">
-          <div class="footer-brand-mark">S</div>
-          <div class="footer-brand-name">stalbeheer</div>
-        </div>
-        <div class="footer-desc">De app voor de moderne varkenshouder. Van inkoop tot aflevering — alles in één overzicht.</div>
+        <div class="eyebrow" data-anim>Functies</div>
+        <h2 data-anim>Alles wat u nodig heeft.<br><em>Niets wat u niet nodig heeft.</em></h2>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Product</div>
-          <ul>
-            <li><a href="functies.html">Functies</a></li>
-            <li><a href="contact.html">Demo aanvragen</a></li>
-            <li><a href="contact.html">Prijzen</a></li>
-          </ul>
+      <p class="intro" data-anim>
+        Eén app, speciaal voor varkenshouders. Elke functie komt voort uit wat u écht elke dag doet in de stal — niet uit wat software-mensen denken dat u doet.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feat wide" data-anim>
+        <div class="feat-icon"><svg><use href="#i-silo"/></svg></div>
+        <h3>Voerplanning &amp; silo-voorraad — automatisch bijgehouden</h3>
+        <p>Stalbeheer koppelt elke silo aan de groepen die eruit eten. Het dagelijks verbruik rolt er vanzelf uit — mét oranje waarschuwing bij &lt;7 dagen en rood bij &lt;3.</p>
+        <div class="feat-visual">
+          <div class="silo-mini">
+            <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 1-2 · Afd 1 &amp; 2</span><span class="silo-days">10 dagen · ~812 kg/dag</span></div><div class="silo-bar"><div class="silo-bar-fill ok" style="width:56%"></div></div></div>
+            <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 3 · Afd 3 &amp; 4</span><span class="silo-days" style="color:var(--danger)">Kritiek · 4 dagen</span></div><div class="silo-bar"><div class="silo-bar-fill crit" style="width:14%"></div></div></div>
+          </div>
         </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Bedrijf</div>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+      </div>
+
+      <div class="feat tall" data-anim>
+        <div class="feat-icon"><svg><use href="#i-pig"/></svg></div>
+        <h3>Groepen &amp; rondes</h3>
+        <p>Volg elke ronde van inkoop tot aflevering. Inkoopdatum, gewicht, afdeling — alles op één plek. Automatisch berekende slachtdatum op basis van groei.</p>
+      </div>
+
+      <div class="feat" data-anim>
+        <div class="feat-icon"><svg><use href="#i-list"/></svg></div>
+        <h3>Dagelijkse taken</h3>
+        <p>Voeren, water, controle, wegen. Elke medewerker ziet wat er moet en vinkt af. U ziet in één oogopslag wat open staat.</p>
+      </div>
+
+      <div class="feat" data-anim>
+        <div class="feat-icon"><svg><use href="#i-syringe"/></svg></div>
+        <h3>Medicatie &amp; wachttijden</h3>
+        <p>Leg medicaties vast per groep inclusief wachttijd. Automatische melding als een wachttijd verstreken is — geen gemiste slachttermijnen meer.</p>
+      </div>
+
+      <div class="feat" data-anim>
+        <div class="feat-icon"><svg><use href="#i-truck"/></svg></div>
+        <h3>Afleveringen &amp; verplaatsingen</h3>
+        <p>Registreer afleveringen direct vanuit de stal. Geslacht gewicht wordt automatisch omgerekend naar levend gewicht.</p>
+      </div>
+
+      <div class="feat wide" data-anim>
+        <div class="feat-icon"><svg><use href="#i-chart"/></svg></div>
+        <h3>Resultaten per ronde — vergelijk en leer</h3>
+        <p>Na aflevering ziet u direct voederconversie, groei per dag, sterftecijfer en eindgewicht versus doelgewicht.</p>
+        <div class="feat-visual">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <div><div style="font-family:var(--display);font-size:26px;letter-spacing:-.03em">2,68</div><div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);letter-spacing:.06em;margin-top:2px">FC</div></div>
+            <div><div style="font-family:var(--display);font-size:26px;letter-spacing:-.03em">842<span style="color:var(--mute);font-size:16px">g</span></div><div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);letter-spacing:.06em;margin-top:2px">Groei / dag</div></div>
+            <div><div style="font-family:var(--display);font-size:26px;letter-spacing:-.03em">1,8<span style="color:var(--mute);font-size:16px">%</span></div><div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);letter-spacing:.06em;margin-top:2px">Uitval</div></div>
+            <div><div style="font-family:var(--display);font-size:26px;letter-spacing:-.03em">117<span style="color:var(--mute);font-size:16px">kg</span></div><div style="font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--mute);letter-spacing:.06em;margin-top:2px">Eindgewicht</div></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Stalbeheer · Alle rechten voorbehouden</div>
   </div>
-</footer>
+</section>
 
-<script src="animations.js"></script>
+<section class="section on-paper">
+  <div class="section-inner">
+    <div class="section-head center">
+      <div class="eyebrow" data-anim>Hoe het werkt</div>
+      <h2 data-anim>In drie stappen aan de slag.</h2>
+      <p class="intro" data-anim>Geen IT-afdeling nodig. Geen app-store. Geen cursus.</p>
+    </div>
+    <div class="steps-grid" data-stagger>
+      <div class="step-item"><h3>Account ingericht</h3><p>Wij maken uw account aan met afdelingen, silo's en gebruikers. Niks te installeren.</p></div>
+      <div class="step-item"><h3>Groepen invoeren</h3><p>Voer per nieuwe ronde de inkoopdatum, gewicht en afdeling in. Stalbeheer rekent de rest.</p></div>
+      <div class="step-item"><h3>Dagelijks bijhouden</h3><p>Elke registratie onder een minuut. Het dashboard laat zien wat aandacht nodig heeft.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2 data-anim>Zien hoe het <em>bij u</em> zou werken?</h2>
+    <p data-anim>Vraag een vrijblijvende demo aan.</p>
+    <div class="hero-cta-row" style="justify-content:center" data-anim>
+      <a href="contact.html" class="btn btn-primary btn-lg">Demo aanvragen <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+<script src="site.js?v=2"></script>
 </body>
 </html>
