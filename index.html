@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stalbeheer — De stal in uw broekzak</title>
+<title>Stalbeheer — App voor Varkenshouders | Varkenshouderij Beheer</title>
+<meta name="description" content="Stalbeheer is de app voor Nederlandse varkenshouders. Beheer voervoorraden, diergroepen, dagelijkse taken en medicaties — altijd bij u in de stal. Vraag een gratis demo aan.">
+<meta name="keywords" content="varkenshouderij app, varkens beheer, stal software, varkenshouder software, varkens administratie, silo beheer, varkenshouderij management, vleesvarkens app, varkenshouderij software nederland">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://stalbeheer.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://stalbeheer.com/">
+<meta property="og:title" content="Stalbeheer — App voor Varkenshouders">
+<meta property="og:description" content="Beheer voervoorraden, diergroepen, taken en medicaties in één app. Gemaakt voor Nederlandse varkenshouders.">
+<meta property="og:locale" content="nl_NL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stalbeheer — App voor Varkenshouders">
+<meta name="twitter:description" content="Beheer uw varkenshouderij in één app. Voer, taken, medicaties en groepen — altijd bij u in de stal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -151,7 +163,7 @@
   text-transform: uppercase; color: var(--mute-2); text-align: center; line-height: 1.6;
 }
 
-/* Responsive */
+/* Responsive voor-na */
 @media (max-width: 920px) {
   .voor-na { grid-template-columns: 1fr; gap: 28px; }
   .vn-connector { flex-direction: row; padding-top: 0; justify-content: center; }
@@ -161,7 +173,146 @@
 @media (max-width: 560px) {
   .xls-menu { display: none; }
 }
+
+/* ── MARQUEE STRIP ────────────────────────────────────────── */
+.marquee-strip {
+  background: var(--ink);
+  overflow: hidden;
+  padding: 15px 0;
+  border-top: 1px solid rgba(245,241,232,.06);
+  border-bottom: 1px solid rgba(245,241,232,.06);
+  user-select: none;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 32s linear infinite;
+}
+.marquee-strip:hover .marquee-track { animation-play-state: paused; }
+.marquee-item {
+  display: inline-flex; align-items: center; gap: 20px;
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(245,241,232,.42);
+  white-space: nowrap; padding: 0 28px;
+}
+.marquee-sep {
+  color: var(--accent); font-size: 16px; line-height: 1; flex-shrink: 0;
+}
+
+/* ── HOE WERKT HET ────────────────────────────────────────── */
+.how-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  margin-top: 56px;
+  counter-reset: step;
+}
+.how-step {
+  padding: 40px 40px 40px 0;
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.how-step:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+.how-step:nth-child(2) { padding: 40px; }
+.how-step-num {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--mute); padding-top: 0;
+}
+.how-step-num::before {
+  counter-increment: step;
+  content: "0" counter(step) " — ";
+}
+.how-step h3 {
+  font-family: var(--display); font-size: 28px; font-weight: 500;
+  letter-spacing: -0.025em; line-height: 1.12;
+}
+.how-step p { font-size: 15px; color: var(--mute); line-height: 1.6; }
+@media (max-width: 900px) {
+  .how-grid { grid-template-columns: 1fr; }
+  .how-step, .how-step:nth-child(2), .how-step:last-child {
+    padding: 28px 0; border-right: none; border-bottom: 1px solid var(--line);
+  }
+  .how-step:last-child { border-bottom: none; }
+}
 </style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Stalbeheer",
+    "description": "App voor Nederlandse varkenshouders. Beheer voervoorraden, diergroepen, dagelijkse taken en medicaties in één overzicht.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web, iOS, Android",
+    "inLanguage": ["nl","en","de","fr","pl","ro","bg"],
+    "url": "https://stalbeheer.com",
+    "author": {
+      "@type": "Organization",
+      "name": "Stalbeheer",
+      "url": "https://stalbeheer.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Twente",
+        "addressRegion": "Overijssel",
+        "addressCountry": "NL"
+      },
+      "telephone": "+31657002985",
+      "email": "ehfsonder@gmail.com"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Stalbeheer",
+    "description": "Software voor varkenshouders uit Twente. Beheer uw varkenshouderij in één app.",
+    "url": "https://stalbeheer.com",
+    "telephone": "+31657002985",
+    "email": "ehfsonder@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Twente",
+      "addressRegion": "Overijssel",
+      "addressCountry": "NL"
+    },
+    "areaServed": "NL",
+    "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Wat is Stalbeheer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Stalbeheer is een app voor varkenshouders. U beheert er voervoorraden, diergroepen, dagelijkse taken en medicaties mee — altijd bij u in de stal, op elke telefoon."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Moet ik iets installeren?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. Stalbeheer werkt in de browser van elke smartphone. Geen app-download nodig."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Hoe snel kan ik beginnen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wij richten uw account in binnen één dag. U hoeft zelf niets in te stellen."
+        }
+      }
+    ]
+  }
+]
+</script>
 </head>
 <body>
 <div data-nav></div>
@@ -240,18 +391,34 @@
   </div>
 </section>
 
-<section class="trust-strip">
-  <div class="trust-inner">
-    <div class="trust-label">Gemaakt in Twente · voor varkenshouders in heel Nederland</div>
-    <div style="display:flex;gap:48px;flex-wrap:wrap;justify-content:center;margin-top:8px">
-      <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Geen installatie<br>nodig</div>
-      <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Werkt op elke<br>smartphone</div>
-      <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Binnen één dag<br>ingericht</div>
-      <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">5 talen<br>ondersteund</div>
-      <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Prijs op<br>aanvraag</div>
-    </div>
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <!-- Set 1 -->
+    <span class="marquee-item">Voerplanning <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Silo-beheer <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Dagelijkse taken <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Medicatie &amp; wachttijden <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Groepen &amp; rondes <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Afleveringen <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">7 talen <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Geen installatie <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Binnen één dag ingericht <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Werkt op elke telefoon <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Gemaakt voor varkenshouders <span class="marquee-sep">·</span></span>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <span class="marquee-item">Voerplanning <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Silo-beheer <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Dagelijkse taken <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Medicatie &amp; wachttijden <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Groepen &amp; rondes <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Afleveringen <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">7 talen <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Geen installatie <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Binnen één dag ingericht <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Werkt op elke telefoon <span class="marquee-sep">·</span></span>
+    <span class="marquee-item">Gemaakt voor varkenshouders <span class="marquee-sep">·</span></span>
   </div>
-</section>
+</div>
 
 <!-- ── VOOR / NA ─────────────────────────────────────────── -->
 <section class="section on-paper">
@@ -403,6 +570,35 @@
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ── HOE WERKT HET ───────────────────────────────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-head center" data-anim>
+      <div class="eyebrow">Aan de slag</div>
+      <h2>Binnen één dag<br>bent u <em>live.</em></h2>
+      <p class="intro">Geen lange implementatie, geen training, geen IT-afdeling nodig. Wij doen het instellen — u begint gewoon.</p>
+    </div>
+
+    <div class="how-grid" data-stagger>
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>U belt ons</h3>
+        <p>We bespreken uw stalindeling, afdelingen, silos en medewerkers. Tien minuten — dan weten wij alles wat we nodig hebben.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>Wij richten in</h3>
+        <p>Binnen één dag staat uw account klaar. Uw silos, afdelingen, voerschema's en medewerkers zijn al ingevuld. U hoeft niets te doen.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>U begint</h3>
+        <p>Elke medewerker logt in op zijn telefoon — in zijn eigen taal. Taken afvinken, voer bijhouden, medicaties registreren. Gewoon werken.</p>
+      </div>
     </div>
   </div>
 </section>

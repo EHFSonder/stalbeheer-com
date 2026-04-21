@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /NIEUW/
+Disallow: /demo-app.html
+
+Sitemap: https://stalbeheer.com/sitemap.xml
