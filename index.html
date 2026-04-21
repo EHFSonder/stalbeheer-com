@@ -8,6 +8,160 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ── VOOR/NA SECTION ─────────────────────────────────────── */
+.voor-na {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  align-items: start;
+  margin-top: 64px;
+}
+
+/* Label chips */
+.vn-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.09em;
+  text-transform: uppercase; padding: 5px 13px; border-radius: 99px;
+  margin-bottom: 16px;
+}
+.vn-chip::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.vn-chip-before { background: #f1f1ef; color: #888079; border: 1px solid #e2ddd5; }
+.vn-chip-before::before { background: #c0bbb2; }
+.vn-chip-after  { background: var(--moss-soft); color: var(--moss); border: 1px solid rgba(47,94,63,.25); }
+.vn-chip-after::before  { background: var(--moss); }
+
+/* ── EXCEL MOCK ───────────────────────────────────────────── */
+.excel-mock {
+  border-radius: 11px; overflow: hidden;
+  border: 1px solid #c0c0c0;
+  box-shadow: 0 16px 40px -16px rgba(0,0,0,.2), 0 2px 8px -4px rgba(0,0,0,.09);
+  background: white;
+}
+.xls-titlebar {
+  background: #217346; color: white;
+  padding: 6px 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 11px; font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+  user-select: none;
+}
+.xls-winbtns { display: flex; gap: 6px; }
+.xls-winbtn  { width: 11px; height: 11px; border-radius: 50%; background: rgba(255,255,255,.28); }
+.xls-menu {
+  background: #f0f0f0; border-bottom: 1px solid #d0d0d0;
+  padding: 3px 10px; display: flex; gap: 16px;
+  font-family: 'Segoe UI', Calibri, Arial, sans-serif; font-size: 10.5px; color: #3a3a3a;
+}
+.xls-menu span:first-child { color: #217346; font-weight: 700; }
+.xls-formulabar {
+  background: white; border-bottom: 1px solid #d0d0d0;
+  padding: 3px 10px; display: flex; align-items: center; gap: 9px;
+  font-family: 'Courier New', monospace; font-size: 10.5px;
+}
+.xls-cellref {
+  min-width: 36px; border: 1px solid #c0c0c0; border-radius: 2px;
+  padding: 1px 5px; text-align: center;
+  font-family: 'Segoe UI', Calibri, Arial, sans-serif; font-weight: 600; font-size: 10px;
+}
+.xls-fx { color: #217346; font-family: 'Segoe UI', Calibri, Arial, sans-serif; font-weight: 700; margin: 0 2px; }
+.xls-table {
+  width: 100%; border-collapse: collapse;
+  font-family: Calibri, 'Segoe UI', Arial, sans-serif; font-size: 11px; color: #111;
+}
+.xls-table .xls-col { background: #f0f0f0; color: #666; text-align: center;
+  border: 1px solid #c8c8c8; font-size: 9.5px; width: 18px; padding: 2px 3px; }
+.xls-table .xls-rn  { background: #f0f0f0; color: #777; text-align: center;
+  border: 1px solid #c8c8c8; font-size: 9.5px; width: 24px; padding: 2px 3px; }
+.xls-table .xls-hd  {
+  background: #217346; color: white; border: 1px solid #185e34;
+  padding: 3px 8px; font-weight: 700; text-align: left; font-size: 10.5px; white-space: nowrap;
+}
+.xls-table td {
+  border: 1px solid #d4d4d4; padding: 3px 8px;
+  white-space: nowrap; max-width: 88px; overflow: hidden; text-overflow: ellipsis;
+}
+.xls-table tr:nth-child(even) td:not(.xls-rn) { background: #f8f8f8; }
+.xls-sel   { outline: 2px solid #217346; outline-offset: -2px; background: #e8f4ed !important; }
+.xls-yel   { background: #fff9c4 !important; }
+.xls-red   { color: #c00000; font-weight: 700; }
+.xls-blue  { color: #1558d6; }
+.xls-muted { color: #aaa; }
+.xls-cmt   { position: relative; }
+.xls-cmt::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  border-style: solid; border-width: 0 8px 8px 0;
+  border-color: transparent #dc2626 transparent transparent;
+}
+.xls-tabs {
+  display: flex; background: #f0f0f0; border-top: 1px solid #d0d0d0;
+  font-family: 'Segoe UI', Calibri, Arial, sans-serif; font-size: 10.5px;
+  padding: 2px 4px 0; gap: 2px;
+}
+.xls-tab { padding: 3px 12px; border: 1px solid #c8c8c8; border-bottom: none;
+  background: #dcdcdc; color: #666; border-radius: 3px 3px 0 0; }
+.xls-tab.xls-active { background: white; color: #217346; font-weight: 700; border-bottom-color: white; }
+.xls-status {
+  background: #217346; color: rgba(255,255,255,.72);
+  padding: 2px 10px; font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+  font-size: 9.5px; display: flex; justify-content: space-between;
+}
+
+/* ── APP MOCK ─────────────────────────────────────────────── */
+.app-mock {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 20px 60px -20px rgba(13,40,24,.22), 0 4px 16px -8px rgba(13,40,24,.1);
+}
+.app-mock-header {
+  background: var(--ink); padding: 18px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.app-mock-title { font-family: var(--display); font-size: 19px; letter-spacing: -0.02em; color: var(--cream); }
+.app-mock-sub { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.07em;
+  color: rgba(245,241,232,.38); text-transform: uppercase; margin-top: 2px; }
+.app-mock-body { padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+
+/* ── LISTS BELOW PANELS ───────────────────────────────────── */
+.vn-list { margin-top: 18px; display: flex; flex-direction: column; gap: 9px; }
+.vn-list-item { display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; color: var(--mute); line-height: 1.4; }
+.vn-icon {
+  width: 19px; height: 19px; border-radius: 50%;
+  display: grid; place-items: center; flex-shrink: 0; margin-top: 1px;
+  font-size: 10px; font-weight: 700;
+}
+.vn-icon.no  { background: #fde8e8; color: #c00000; }
+.vn-icon.yes { background: var(--moss-soft); color: var(--moss); }
+
+/* ── CONNECTOR ────────────────────────────────────────────── */
+.vn-connector {
+  display: flex; flex-direction: column; align-items: center;
+  padding-top: 48px; gap: 10px;
+}
+.vn-arrow {
+  width: 42px; height: 42px; background: var(--ink); border-radius: 50%;
+  display: grid; place-items: center;
+}
+.vn-arrow svg { width: 18px; height: 18px; stroke: var(--cream); stroke-width: 1.6;
+  fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.vn-connector-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--mute-2); text-align: center; line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+  .voor-na { grid-template-columns: 1fr; gap: 28px; }
+  .vn-connector { flex-direction: row; padding-top: 0; justify-content: center; }
+  .vn-connector-label { display: none; }
+  .vn-arrow { transform: rotate(90deg); }
+}
+@media (max-width: 560px) {
+  .xls-menu { display: none; }
+}
+</style>
 </head>
 <body>
 <div data-nav></div>
@@ -95,6 +249,160 @@
       <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Binnen één dag<br>ingericht</div>
       <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">5 talen<br>ondersteund</div>
       <div style="font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.06em;text-align:center">Prijs op<br>aanvraag</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VOOR / NA ─────────────────────────────────────────── -->
+<section class="section on-paper">
+  <div class="section-inner">
+    <div class="section-head center" data-anim>
+      <div class="eyebrow">Voor en na</div>
+      <h2>Dit kent u.<br><em>Dit hoeft niet meer.</em></h2>
+      <p class="intro">Van een Excelbestand dat niemand bijhoudt naar één app die alles automatisch bijwerkt — in de taal van uw medewerkers.</p>
+    </div>
+
+    <div class="voor-na">
+
+      <!-- ══ BEFORE: EXCEL ══ -->
+      <div data-anim style="--i:0">
+        <div class="vn-chip vn-chip-before">Vroeger</div>
+
+        <div class="excel-mock">
+          <div class="xls-titlebar">
+            <span style="opacity:.88">Varkens_2026_v3_definitief_2.xlsx — Excel</span>
+            <div class="xls-winbtns"><div class="xls-winbtn"></div><div class="xls-winbtn"></div><div class="xls-winbtn" style="background:rgba(255,255,255,.14)"></div></div>
+          </div>
+          <div class="xls-menu">
+            <span>Bestand</span><span>Start</span><span>Invoegen</span><span>Pagina-indeling</span><span>Formules</span><span>Gegevens</span>
+          </div>
+          <div class="xls-formulabar">
+            <span class="xls-cellref">F5</span>
+            <span class="xls-fx">fx</span>
+            <span class="xls-red">BELLEN COPPENS!!!</span>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="xls-table">
+              <thead>
+                <tr>
+                  <td class="xls-rn"></td>
+                  <td class="xls-col">A</td><td class="xls-col">B</td><td class="xls-col">C</td>
+                  <td class="xls-col">D</td><td class="xls-col">E</td><td class="xls-col">F</td><td class="xls-col">G</td>
+                </tr>
+                <tr>
+                  <td class="xls-rn">1</td>
+                  <th class="xls-hd">Datum</th><th class="xls-hd">Afd.</th><th class="xls-hd">Dieren</th>
+                  <th class="xls-hd">Gew. (kg)</th><th class="xls-hd">Silo</th><th class="xls-hd">Medicatie</th><th class="xls-hd">Opmerkingen</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="xls-rn">2</td>
+                  <td>14-jan-26</td><td>Afd 1</td><td>275</td><td>88</td><td>Silo 1-2</td><td>—</td><td style="color:#888">check gewicht?</td>
+                </tr>
+                <tr>
+                  <td class="xls-rn">3</td>
+                  <td>14-jan-26</td><td>Afd 2</td><td>280</td><td>91</td><td>Silo 1-2</td><td>—</td><td>—</td>
+                </tr>
+                <tr>
+                  <td class="xls-rn">4</td>
+                  <td>14-jan-26</td><td>Afd 3</td><td>187</td><td>94</td><td>Silo 3</td>
+                  <td class="xls-red xls-cmt">Draxxin!!!</td>
+                  <td class="xls-red">WACHTTIJD 14 apr</td>
+                </tr>
+                <tr>
+                  <td class="xls-rn">5</td>
+                  <td>14-jan-26</td><td>Afd 4</td><td>187</td>
+                  <td class="xls-sel">96</td>
+                  <td class="xls-yel">silo bijna leeg!!!</td>
+                  <td class="xls-red">BELLEN COPPENS!!!</td>
+                  <td class="xls-muted">nog invullen</td>
+                </tr>
+                <tr style="background:#f5f5f5">
+                  <td class="xls-rn">6</td>
+                  <td style="font-weight:700">Totaal</td><td></td>
+                  <td class="xls-blue">=SOM(C2:C5)</td>
+                  <td></td><td></td><td></td><td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="xls-tabs">
+            <div class="xls-tab">Overzicht</div>
+            <div class="xls-tab xls-active">Dieren jan</div>
+            <div class="xls-tab">Silo</div>
+            <div class="xls-tab xls-muted">Sheet4</div>
+          </div>
+          <div class="xls-status">
+            <span>Klaar</span>
+            <span>Gemiddelde: 184,75 &nbsp;|&nbsp; Aantal: 4 &nbsp;|&nbsp; Som: 739</span>
+            <span>Zoom: 80%</span>
+          </div>
+        </div>
+
+        <div class="vn-list">
+          <div class="vn-list-item"><div class="vn-icon no">✕</div><span>Handmatig invullen — fouten liggen op de loer</span></div>
+          <div class="vn-list-item"><div class="vn-icon no">✕</div><span>Niemand weet wie het bijwerkt</span></div>
+          <div class="vn-list-item"><div class="vn-icon no">✕</div><span>Silo-alarm = een chauffeur die belt</span></div>
+        </div>
+      </div>
+
+      <!-- ══ CONNECTOR ══ -->
+      <div class="vn-connector">
+        <div class="vn-arrow">
+          <svg viewBox="0 0 16 16"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+        </div>
+        <div class="vn-connector-label">Stal-<br>beheer</div>
+      </div>
+
+      <!-- ══ AFTER: APP ══ -->
+      <div data-anim style="--i:1">
+        <div class="vn-chip vn-chip-after">Met Stalbeheer</div>
+
+        <div class="app-mock">
+          <div class="app-mock-header">
+            <div>
+              <div class="app-mock-title">Dashboard</div>
+              <div class="app-mock-sub">Demo · ma 14 apr 2026</div>
+            </div>
+            <div class="ph-logo">S</div>
+          </div>
+          <div class="app-mock-body">
+            <div class="ph-alert">
+              <div class="ph-alert-icon"><svg><use href="#i-alert"/></svg></div>
+              <div>
+                <div class="ph-alert-title">Silo 3 bijna leeg — 4 dagen</div>
+                <div class="ph-alert-sub">1.680 kg · ~410 kg/dag · Afd 3 &amp; 4</div>
+              </div>
+            </div>
+            <div class="ph-stats">
+              <div class="ph-stat"><div class="ph-stat-v">555</div><div class="ph-stat-l">Levend</div></div>
+              <div class="ph-stat"><div class="ph-stat-v">3</div><div class="ph-stat-l">Rondes</div></div>
+              <div class="ph-stat"><div class="ph-stat-v">2</div><div class="ph-stat-l">Open</div></div>
+            </div>
+            <div class="ph-card">
+              <div class="ph-card-title">Taken vandaag</div>
+              <div class="ph-task"><div class="ph-check done"><svg><use href="#i-check"/></svg></div><div><div class="ph-task-title done">Voeren — Alle afd.</div><div class="ph-task-meta">Jan · 7:30</div></div></div>
+              <div class="ph-task"><div class="ph-check done"><svg><use href="#i-check"/></svg></div><div><div class="ph-task-title done">Water — Afd 4</div><div class="ph-task-meta">Kees · 8:15</div></div></div>
+              <div class="ph-task"><div class="ph-check"></div><div><div class="ph-task-title">Controle — Afd 1 &amp; 2</div><div class="ph-task-meta">Jan</div></div></div>
+            </div>
+            <div style="background:white;border:1px solid var(--line);border-radius:12px;padding:12px 14px">
+              <div class="ph-card-title">Silo-overzicht</div>
+              <div class="silo-mini">
+                <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 1-2</span><span class="silo-days">10 d</span></div><div class="silo-bar"><div class="silo-bar-fill ok" style="width:56%"></div></div></div>
+                <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 3</span><span class="silo-days" style="color:var(--danger)">4 d</span></div><div class="silo-bar"><div class="silo-bar-fill crit" style="width:14%"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vn-list">
+          <div class="vn-list-item"><div class="vn-icon yes">✓</div><span>Automatisch bijgehouden — altijd actueel</span></div>
+          <div class="vn-list-item"><div class="vn-icon yes">✓</div><span>Elke medewerker ziet zijn eigen taken</span></div>
+          <div class="vn-list-item"><div class="vn-icon yes">✓</div><span>Direct melding bij kritieke silo-stand</span></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

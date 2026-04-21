@@ -2,251 +2,541 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Demo — Stalbeheer</title>
-<meta name="description" content="Probeer Stalbeheer zelf. Verken de interactieve demo met voorbeeldgegevens — geen aanmelding nodig.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Verken Stalbeheer zelf — interactieve demo met echte Nederlandse varkenshouderijdata. Geen aanmelding nodig.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 <style>
-.demo-layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-@media(max-width:860px){.demo-layout{grid-template-columns:1fr;gap:48px}}
 
-/* Phone mockup */
-.phone-wrap{display:flex;justify-content:center}
-.phone{
-  width:300px;
-  background:#fff;
-  border-radius:40px;
-  border:10px solid #1a1a1a;
-  box-shadow:0 40px 80px rgba(0,0,0,.25),0 0 0 2px #333;
-  overflow:hidden;
-  position:relative;
+/* ── DEMO HERO (ink + centered product) ─────────────────── */
+.demo-hero {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 96px 32px 0;
+  position: relative;
+  overflow: hidden;
 }
-.phone-notch{height:28px;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
-.phone-notch-pill{width:80px;height:12px;background:#111;border-radius:99px}
-.phone-inner{padding:0}
+.demo-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(ellipse at 25% 60%, rgba(200,114,43,.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 20%, rgba(47,94,63,.10) 0%, transparent 50%);
+  pointer-events: none;
+}
+.demo-hero-inner {
+  max-width: var(--maxw); margin: 0 auto;
+  position: relative;
+}
+.demo-hero-copy {
+  max-width: 680px; margin: 0 auto; text-align: center;
+  padding-bottom: 80px;
+}
+.demo-hero h1 {
+  font-size: clamp(44px, 7vw, 92px);
+  color: var(--cream);
+  margin-top: 20px;
+  margin-bottom: 24px;
+  line-height: 1.01;
+}
+.demo-hero h1 em { color: var(--accent); }
+.demo-hero .eyebrow { color: rgba(245,241,232,.5); justify-content: center; }
+.demo-hero .eyebrow::before { background: rgba(245,241,232,.25); }
+.demo-hero-sub {
+  font-size: 18px;
+  color: rgba(245,241,232,.65);
+  max-width: 560px; margin: 0 auto 36px;
+  line-height: 1.55;
+}
+.demo-hero-cta { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.demo-hero .btn-primary { background: var(--cream); color: var(--ink); }
+.demo-hero .btn-primary:hover { background: white; }
+.demo-hero .btn-secondary { color: var(--cream); border-color: rgba(245,241,232,.22); }
+.demo-hero .btn-secondary:hover { border-color: rgba(245,241,232,.6); background: rgba(245,241,232,.06); }
 
-/* Mini app UI inside phone */
-.ph-banner{background:#f59e0b;color:#78350f;font-size:10px;font-weight:700;padding:5px 10px;text-align:center}
-.ph-header{background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 12px;display:flex;justify-content:space-between;align-items:flex-start}
-.ph-title{font-size:15px;font-weight:900;letter-spacing:-.03em}
-.ph-sub{font-size:9px;color:#6b7280;margin-top:1px}
-.ph-logo{width:26px;height:26px;background:#1a5c3a;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;color:#fff;letter-spacing:-.04em}
-.ph-content{padding:10px;display:flex;flex-direction:column;gap:8px;background:#f0f0f2}
-.ph-alert{background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:9px 10px;display:flex;gap:7px;align-items:flex-start}
-.ph-alert-icon{font-size:13px}
-.ph-alert-title{font-size:10px;font-weight:700;color:#dc2626}
-.ph-alert-sub{font-size:9px;color:#6b7280;margin-top:1px}
-.ph-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.ph-stat{background:#fff;border-radius:10px;padding:8px 4px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.ph-stat-val{font-size:16px;font-weight:900;letter-spacing:-.04em;color:#1a5c3a}
-.ph-stat-lbl{font-size:8px;color:#6b7280;font-weight:500;margin-top:1px}
-.ph-card{background:#fff;border-radius:10px;padding:10px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
-.ph-card-title{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#6b7280;margin-bottom:7px}
-.ph-task{display:flex;align-items:center;gap:7px;padding:5px 0;border-bottom:1px solid #f3f4f6;font-size:10px}
-.ph-task:last-child{border-bottom:none}
-.ph-check{width:14px;height:14px;border-radius:50%;border:1.5px solid #e5e7eb;flex-shrink:0}
-.ph-check.done{background:#1a5c3a;border-color:#1a5c3a}
-.ph-task.done{opacity:.5;text-decoration:line-through}
-.ph-nav{background:#fff;border-top:1px solid #e5e7eb;display:grid;grid-template-columns:repeat(4,1fr);height:48px}
-.ph-nav-item{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:8px;color:#6b7280;font-weight:500}
-.ph-nav-item.active{color:#1a5c3a}
-.ph-nav-icon{font-size:14px}
+/* ── PRODUCT STAGE (lifted phone) ───────────────────────── */
+.demo-stage {
+  max-width: 900px; margin: 0 auto;
+  position: relative;
+}
+.demo-stage-bg {
+  background: linear-gradient(180deg, rgba(245,241,232,.06) 0%, rgba(245,230,211,.10) 100%);
+  border: 1px solid rgba(245,241,232,.1);
+  border-bottom: none;
+  border-radius: 24px 24px 0 0;
+  padding: 56px 48px 0;
+  display: flex; align-items: flex-end; justify-content: center; gap: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.demo-stage-bg::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(47,94,63,.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(200,114,43,.06) 0%, transparent 40%);
+  pointer-events: none;
+}
 
-/* Right info */
-.demo-info{display:flex;flex-direction:column;gap:24px}
-.demo-features{list-style:none;display:flex;flex-direction:column;gap:12px}
-.demo-features li{display:flex;align-items:flex-start;gap:12px;font-size:15px;font-weight:500}
-.demo-features li .fi{font-size:18px;flex-shrink:0;margin-top:1px}
-.demo-features li strong{display:block;font-weight:700}
-.demo-features li span{color:var(--gray-500,#6b7280);font-size:14px;font-weight:400}
-.demo-cta-row{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+/* Side stat cards flanking the phone */
+.demo-stat-card {
+  background: rgba(245,241,232,.06);
+  border: 1px solid rgba(245,241,232,.1);
+  border-radius: 14px;
+  padding: 20px 22px;
+  width: 210px;
+  flex-shrink: 0;
+  margin-bottom: 48px;
+}
+.demo-stat-card-label {
+  font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(245,241,232,.4);
+  margin-bottom: 12px;
+}
+.demo-stat-card-val {
+  font-family: var(--display);
+  font-size: 36px; letter-spacing: -0.04em;
+  color: rgba(245,241,232,.9); line-height: 1;
+}
+.demo-stat-card-val em { font-style: italic; color: var(--accent); }
+.demo-stat-card-sub {
+  font-size: 13px; color: rgba(245,241,232,.45);
+  margin-top: 8px; line-height: 1.45;
+}
+.demo-stat-card .silo-bar { background: rgba(245,241,232,.1); }
+.demo-stat-card .silo-name { color: rgba(245,241,232,.7); font-size: 12.5px; }
+.demo-stat-card .silo-days { color: rgba(245,241,232,.4); }
+.demo-stat-card .silo-row-top { margin-bottom: 5px; }
 
-/* Screens strip */
-.screens-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
-@media(max-width:640px){.screens-strip{grid-template-columns:repeat(2,1fr)}}
-.screen-card{background:#fff;border-radius:16px;padding:20px 16px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.screen-icon{font-size:32px;margin-bottom:10px}
-.screen-name{font-size:14px;font-weight:700;margin-bottom:4px}
-.screen-desc{font-size:13px;color:#6b7280;line-height:1.45}
+/* ── WHAT'S INSIDE SECTION ──────────────────────────────── */
+.demo-screens {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  border-top: 1px solid var(--line);
+  margin-top: 64px;
+}
+.demo-screen {
+  padding: 32px 28px 32px 0;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 14px;
+}
+.demo-screen:last-child { border-right: none; padding-right: 0; padding-left: 28px; }
+.demo-screen:nth-child(3) { padding-left: 28px; padding-right: 28px; }
+.demo-screen:nth-child(2) { padding-left: 28px; padding-right: 28px; }
+.demo-screen-num {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.06em; color: var(--mute);
+}
+.demo-screen h3 {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 500; letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.demo-screen p { font-size: 14.5px; color: var(--mute); line-height: 1.55; }
+.demo-screen-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--accent);
+  margin-top: auto;
+}
+.demo-screen-badge::before {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── FEATURES NARRATIVE ─────────────────────────────────── */
+.demo-feat-list {
+  display: flex; flex-direction: column; gap: 0;
+  border-top: 1px solid var(--line);
+}
+.demo-feat-row {
+  display: grid; grid-template-columns: 56px 1fr 1fr; gap: 40px;
+  align-items: start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+}
+.demo-feat-num {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.06em; color: var(--mute);
+  padding-top: 5px;
+}
+.demo-feat-head {
+  font-family: var(--display);
+  font-size: 20px; font-weight: 500; letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.demo-feat-body { font-size: 14.5px; color: var(--mute); line-height: 1.55; }
+
+/* ── EMAIL GATE MODAL ───────────────────────────────────── */
+#demo-gate {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(13,40,24,.6);
+  backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.demo-gate-modal {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 44px 40px;
+  max-width: 420px; width: 100%;
+  box-shadow: 0 32px 80px -24px rgba(13,40,24,.4);
+  position: relative;
+  animation: gateIn .35s cubic-bezier(.16,1,.3,1);
+}
+@keyframes gateIn {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+.demo-gate-mark {
+  width: 48px; height: 48px;
+  background: var(--moss-soft);
+  border-radius: 12px;
+  display: grid; place-items: center;
+  margin-bottom: 20px;
+  font-family: var(--display); font-style: italic;
+  font-size: 26px; color: var(--moss); font-weight: 600;
+}
+.demo-gate-title {
+  font-family: var(--display);
+  font-size: 28px; font-weight: 500;
+  letter-spacing: -0.025em; line-height: 1.1;
+  margin-bottom: 8px;
+}
+.demo-gate-sub {
+  font-size: 15px; color: var(--mute);
+  line-height: 1.55; margin-bottom: 28px;
+}
+.demo-gate-label {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--mute);
+  display: block; margin-bottom: 8px;
+}
+.demo-gate-input {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--line-2); border-radius: 10px;
+  font-size: 15px; font-family: inherit; color: var(--ink);
+  background: white; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.demo-gate-input:focus {
+  border-color: var(--moss);
+  box-shadow: 0 0 0 3px rgba(47,94,63,.1);
+}
+.demo-gate-input::placeholder { color: var(--mute-2); }
+.demo-gate-error {
+  display: none; color: var(--danger);
+  font-size: 13px; margin-top: 6px; margin-bottom: 4px;
+}
+.demo-gate-submit {
+  width: 100%; justify-content: center; margin-top: 14px;
+  padding: 14px 20px; font-size: 15px;
+}
+.demo-gate-cancel {
+  display: block; width: 100%; margin-top: 10px;
+  background: none; border: none; cursor: pointer;
+  font-size: 14px; color: var(--mute); font-family: inherit;
+  padding: 8px; transition: color .15s;
+}
+.demo-gate-cancel:hover { color: var(--ink); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .demo-stat-card { display: none; }
+  .demo-stage-bg { padding: 40px 24px 0; }
+  .demo-screens { grid-template-columns: 1fr 1fr; }
+  .demo-screen { border-right: none; padding: 28px 0 !important; }
+  .demo-screen:nth-child(odd) { border-right: 1px solid var(--line); padding-right: 28px !important; }
+  .demo-screen:nth-child(even) { padding-left: 28px !important; }
+  .demo-feat-row { grid-template-columns: 40px 1fr; gap: 20px; }
+  .demo-feat-body { grid-column: 2; }
+}
+@media (max-width: 640px) {
+  .demo-hero { padding: 72px 24px 0; }
+  .demo-hero-copy { padding-bottom: 56px; }
+  .demo-screens { grid-template-columns: 1fr; }
+  .demo-screen, .demo-screen:nth-child(odd), .demo-screen:nth-child(even) {
+    border-right: none !important; padding: 24px 0 !important;
+  }
+  .demo-gate-modal { padding: 32px 24px; }
+  .demo-feat-row { grid-template-columns: 1fr; gap: 8px; }
+  .demo-feat-num { padding-top: 0; }
+}
 </style>
 </head>
 <body>
+<div data-nav></div>
 
-<!-- NAV -->
-<header class="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-mark">S</div>
-      <div class="nav-logo-text">stal<span>beheer</span></div>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="functies.html">Functies</a></li>
-      <li><a href="demo.html" class="active">Demo</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <a href="contact.html" class="btn btn-primary btn-sm">Demo aanvragen →</a>
+<!-- ── DEMO HERO ──────────────────────────────────────────── -->
+<section class="demo-hero">
+  <div class="demo-hero-inner">
+    <div class="demo-hero-copy">
+      <div class="eyebrow bare" data-anim style="--i:0">Interactieve demo</div>
+      <h1 data-anim style="--i:1">Kijk hoe het<br><em>echt</em> werkt.</h1>
+      <p class="demo-hero-sub" data-anim style="--i:2">
+        Verken de app met echte Nederlandse varkenshouderijdata. Vink taken af, bekijk silo-voorraden en groepen — geen aanmelding nodig.
+      </p>
+      <div class="demo-hero-cta" data-anim style="--i:3">
+        <a href="demo-app.html" class="btn btn-primary btn-lg" id="open-demo-btn">Open de demo <svg><use href="#i-arrow"/></svg></a>
+        <a href="contact.html" class="btn btn-secondary btn-lg">Persoonlijke demo aanvragen</a>
+      </div>
     </div>
-  </div>
-</header>
 
-<!-- HERO -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <div class="section-eyebrow" data-hero style="color:rgba(255,255,255,.6);margin-bottom:10px">Interactieve demo</div>
-    <h1 data-hero>Probeer Stalbeheer zelf</h1>
-    <p data-hero>Verken de app met realistische voorbeeldgegevens. Geen aanmelding nodig — gewoon klikken.</p>
-    <div data-hero style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="demo-app.html" class="btn btn-amber btn-lg">Open demo →</a>
-      <a href="contact.html" class="btn btn-outline-white btn-lg">Persoonlijke demo</a>
-    </div>
-  </div>
-</section>
+    <!-- Phone mockup + flanking stat cards -->
+    <div class="demo-stage" data-anim style="--i:4">
+      <div class="demo-stage-bg">
 
-<!-- DEMO SECTIE -->
-<section class="section">
-  <div class="section-inner">
-    <div class="demo-layout" data-anim>
+        <!-- Left stat card -->
+        <div class="demo-stat-card">
+          <div class="demo-stat-card-label">Silo-voorraad</div>
+          <div class="silo-mini" style="gap:14px">
+            <div class="silo-row">
+              <div class="silo-row-top"><span class="silo-name">Silo 1-2</span><span class="silo-days" style="color:rgba(245,241,232,.45)">10 d</span></div>
+              <div class="silo-bar"><div class="silo-bar-fill ok" style="width:56%"></div></div>
+            </div>
+            <div class="silo-row">
+              <div class="silo-row-top"><span class="silo-name">Silo 3</span><span class="silo-days" style="color:var(--danger)">4 d</span></div>
+              <div class="silo-bar"><div class="silo-bar-fill crit" style="width:14%"></div></div>
+            </div>
+          </div>
+          <div class="demo-stat-card-sub" style="margin-top:14px">Kritieke melding op het dashboard zodra u opent.</div>
+        </div>
 
-      <!-- Phone mockup -->
-      <div class="phone-wrap">
-        <div class="phone">
-          <div class="phone-notch"><div class="phone-notch-pill"></div></div>
-          <div class="phone-inner">
-            <div class="ph-banner">🎯 Demo met voorbeelddata</div>
+        <!-- Phone -->
+        <div class="phone" style="position:relative;z-index:2">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ph-status"><span>9:41</span><div class="ph-status-right"><svg><use href="#i-wifi"/></svg><svg viewBox="0 0 20 12" style="width:18px;height:12px"><use href="#i-battery"/></svg></div></div>
             <div class="ph-header">
-              <div><div class="ph-title">Dashboard</div><div class="ph-sub">Demo Varkenshouderij BV</div></div>
+              <div><div class="ph-h-title">Dashboard</div><div class="ph-h-sub">Demo · ma 14 apr</div></div>
               <div class="ph-logo">S</div>
             </div>
-            <div class="ph-content">
+            <div class="ph-body">
               <div class="ph-alert">
-                <div class="ph-alert-icon">🚨</div>
+                <div class="ph-alert-icon"><svg><use href="#i-alert"/></svg></div>
                 <div>
                   <div class="ph-alert-title">Silo 3 bijna leeg — 4 dagen</div>
-                  <div class="ph-alert-sub">1.680 kg · ~410 kg/dag · Afd 3 & 4</div>
+                  <div class="ph-alert-sub">1.680 kg · ~410 kg/dag · Afd 3 &amp; 4</div>
                 </div>
               </div>
               <div class="ph-stats">
-                <div class="ph-stat"><div class="ph-stat-val">555</div><div class="ph-stat-lbl">Dieren</div></div>
-                <div class="ph-stat"><div class="ph-stat-val">3</div><div class="ph-stat-lbl">Rondes</div></div>
-                <div class="ph-stat"><div class="ph-stat-val">2</div><div class="ph-stat-lbl">Taken open</div></div>
+                <div class="ph-stat"><div class="ph-stat-v">555</div><div class="ph-stat-l">Levend</div></div>
+                <div class="ph-stat"><div class="ph-stat-v">3</div><div class="ph-stat-l">Rondes</div></div>
+                <div class="ph-stat"><div class="ph-stat-v">2</div><div class="ph-stat-l">Open</div></div>
               </div>
               <div class="ph-card">
                 <div class="ph-card-title">Taken vandaag</div>
-                <div class="ph-task done"><div class="ph-check done"></div>🌾 Voeren — alle afdelingen</div>
-                <div class="ph-task done"><div class="ph-check done"></div>💧 Water — Afd 4</div>
-                <div class="ph-task"><div class="ph-check"></div>👁 Controle — Afd 1 & 2</div>
-                <div class="ph-task"><div class="ph-check"></div>⚖️ Wegen — Afd 3</div>
+                <div class="ph-task"><div class="ph-check done"><svg><use href="#i-check"/></svg></div><div><div class="ph-task-title done">Voeren — Alle afd.</div><div class="ph-task-meta">Jan</div></div></div>
+                <div class="ph-task"><div class="ph-check done"><svg><use href="#i-check"/></svg></div><div><div class="ph-task-title done">Water — Afd 4</div><div class="ph-task-meta">Kees</div></div></div>
+                <div class="ph-task"><div class="ph-check"></div><div><div class="ph-task-title">Controle — Afd 1 &amp; 2</div><div class="ph-task-meta">Jan</div></div></div>
               </div>
             </div>
-            <div class="ph-nav">
-              <div class="ph-nav-item active"><div class="ph-nav-icon">🏠</div>Dashboard</div>
-              <div class="ph-nav-item"><div class="ph-nav-icon">✅</div>Taken</div>
-              <div class="ph-nav-item"><div class="ph-nav-icon">🐷</div>Groepen</div>
-              <div class="ph-nav-item"><div class="ph-nav-icon">🌾</div>Voerplan</div>
+            <div class="ph-bottom">
+              <div class="ph-nav-item active"><svg><use href="#i-home"/></svg><span>Home</span></div>
+              <div class="ph-nav-item"><svg><use href="#i-list"/></svg><span>Taken</span></div>
+              <div class="ph-nav-item"><svg><use href="#i-pig"/></svg><span>Groepen</span></div>
+              <div class="ph-nav-item"><svg><use href="#i-silo"/></svg><span>Voer</span></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Info -->
-      <div class="demo-info">
-        <div>
-          <div class="section-eyebrow" style="margin-bottom:12px">Wat zit er in de demo</div>
-          <h2 style="font-size:32px;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px">Vier pagina's,<br>volledig interactief</h2>
-          <p style="font-size:16px;color:#6b7280;line-height:1.65">Klik door de app, vink taken af en bekijk hoe voervoorraden en groepen worden bijgehouden. Alles werkt — met echte Nederlandse varkenshouderijdata.</p>
-        </div>
-        <ul class="demo-features">
-          <li><span class="fi">🏠</span><div><strong>Dashboard</strong><span>Realtime overzicht met silo-alerting, slachtagenda en open taken</span></div></li>
-          <li><span class="fi">✅</span><div><strong>Taken</strong><span>Afvinken per medewerker, notities, en taken voor morgen</span></div></li>
-          <li><span class="fi">🐷</span><div><strong>Groepen</strong><span>3 actieve rondes met week, gewicht, uitval en medicatie-badge</span></div></li>
-          <li><span class="fi">🌾</span><div><strong>Voerplanning</strong><span>Voerschema per afdeling gekoppeld aan silo-voorraad met resterende dagen</span></div></li>
-        </ul>
-        <div class="demo-cta-row">
-          <a href="demo-app.html" class="btn btn-primary btn-lg">Open demo →</a>
-          <a href="contact.html" style="font-size:14px;color:#6b7280;font-weight:500">Wilt u een demo op maat? <strong style="color:#1a5c3a">Neem contact op →</strong></a>
+        <!-- Right stat card -->
+        <div class="demo-stat-card">
+          <div class="demo-stat-card-label">Ronde 1-2026 · Afd 1&amp;2</div>
+          <div class="demo-stat-card-val">112 <em>kg</em></div>
+          <div class="demo-stat-card-sub">275 levend · slacht over 14 dagen</div>
+          <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(245,241,232,.1)">
+            <div class="demo-stat-card-label" style="margin-bottom:6px">Uitval deze ronde</div>
+            <div style="font-family:var(--display);font-size:24px;letter-spacing:-0.03em;color:rgba(245,241,232,.8)">1,8 <span style="font-size:15px;color:rgba(245,241,232,.4)">%</span></div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- SCREENS STRIP -->
-<section class="section" style="background:#f8f9fa;padding-top:48px;padding-bottom:48px">
+<!-- ── WHAT'S IN THE DEMO ─────────────────────────────────── -->
+<section class="section">
   <div class="section-inner">
-    <div style="text-align:center;margin-bottom:32px">
-      <div class="section-eyebrow" style="margin-bottom:8px">Wat u kunt uitproberen</div>
-      <h2 style="font-size:28px;font-weight:900;letter-spacing:-.03em">Alles wat de app kan</h2>
-    </div>
-    <div class="screens-strip" data-stagger>
-      <div class="screen-card">
-        <div class="screen-icon">🚨</div>
-        <div class="screen-name">Silo-alerting</div>
-        <div class="screen-desc">Silo 3 staat op kritiek — zie hoe het dashboard direct waarschuwt met resterende dagen</div>
-      </div>
-      <div class="screen-card">
-        <div class="screen-icon">☑️</div>
-        <div class="screen-name">Taken afvinken</div>
-        <div class="screen-desc">Tik op een taak om hem af te ronden. De badge op de nav past direct mee</div>
-      </div>
-      <div class="screen-card">
-        <div class="screen-icon">📅</div>
-        <div class="screen-name">Slachtagenda</div>
-        <div class="screen-desc">Ronde 1-2026 wordt over 14 dagen geslacht — overzichtelijk in rood op het dashboard</div>
-      </div>
-      <div class="screen-card">
-        <div class="screen-icon">💊</div>
-        <div class="screen-name">Medicatie-badge</div>
-        <div class="screen-desc">Groep Afd 3 heeft Draxxin — wachttijd en vrijgavedatum direct zichtbaar</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section" style="background:var(--green-dark,#0f3d27);padding:64px 0">
-  <div class="section-inner" style="text-align:center">
-    <h2 style="font-size:32px;font-weight:900;color:white;letter-spacing:-.03em;margin-bottom:12px">Klaar voor uw eigen stal?</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.7);margin-bottom:32px">Wij richten uw account in met uw afdelingen, silos en medewerkers. Binnen één dag kunt u beginnen.</p>
-    <a href="contact.html" class="btn btn-amber btn-lg">Demo aanvragen →</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
+    <div class="section-head" data-anim>
       <div>
-        <div class="footer-brand-logo">
-          <div class="footer-brand-mark">S</div>
-          <div class="footer-brand-name">stalbeheer</div>
-        </div>
-        <div class="footer-desc">De app voor de moderne varkenshouder. Van inkoop tot aflevering — alles in één overzicht.</div>
+        <div class="eyebrow">Wat u uitprobeert</div>
+        <h2>Vier schermen.<br><em>Alles</em> werkt.</h2>
       </div>
-      <div class="footer-links">
-        <div class="footer-col">
-          <div class="footer-col-title">Product</div>
-          <ul>
-            <li><a href="functies.html">Functies</a></li>
-            <li><a href="demo.html">Demo</a></li>
-            <li><a href="contact.html">Demo aanvragen</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <div class="footer-col-title">Bedrijf</div>
-          <ul>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+      <p class="intro">
+        Klik door de app met realistische voorbeeldgegevens. Vink taken af, bekijk silo-kritiek en lees medicatie-wachttijden — precies zoals u het dagelijks zou doen.
+      </p>
+    </div>
+
+    <div class="demo-screens" data-stagger>
+      <div class="demo-screen">
+        <div class="demo-screen-num">01</div>
+        <h3>Dashboard</h3>
+        <p>Realtime overzicht. Silo 3 staat op kritiek — het systeem waarschuwt direct met resterende dagen en betrokken afdelingen.</p>
+        <div class="demo-screen-badge">Silo-alerting actief</div>
+      </div>
+      <div class="demo-screen">
+        <div class="demo-screen-num">02</div>
+        <h3>Taken</h3>
+        <p>Tik een taak aan om hem af te ronden. De open-badge op de navigatiebalk past direct mee. Elke taak is gekoppeld aan een medewerker.</p>
+        <div class="demo-screen-badge">Interactief afvinken</div>
+      </div>
+      <div class="demo-screen">
+        <div class="demo-screen-num">03</div>
+        <h3>Groepen</h3>
+        <p>Drie actieve rondes met inkoopdatum, gewicht, uitval en medicatie-badge. Ronde 1 heeft Draxxin — wachttijd en vrijgavedatum direct zichtbaar.</p>
+        <div class="demo-screen-badge">Medicatie &amp; wachttijd</div>
+      </div>
+      <div class="demo-screen">
+        <div class="demo-screen-num">04</div>
+        <h3>Voerplanning</h3>
+        <p>Voerschema per afdeling gekoppeld aan silo-voorraad. Resterende dagen worden automatisch berekend op basis van huidig verbruik.</p>
+        <div class="demo-screen-badge">Automatische berekening</div>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Stalbeheer · Alle rechten voorbehouden</div>
   </div>
-</footer>
+</section>
 
-<script src="animations.js"></script>
+<!-- ── FEATURES IN DETAIL ─────────────────────────────────── -->
+<section class="section on-paper tight">
+  <div class="section-inner">
+    <div class="section-head center" style="margin-bottom:48px" data-anim>
+      <div class="eyebrow">Wat u echt ziet</div>
+      <h2>Geen knoppen ter decoratie.<br><em>Alles</em> doet iets.</h2>
+    </div>
+
+    <div class="demo-feat-list" data-stagger>
+      <div class="demo-feat-row">
+        <div class="demo-feat-num">01</div>
+        <div class="demo-feat-head">Silo-alerting op het dashboard</div>
+        <div class="demo-feat-body">Silo 3 staat op rood. Het dashboard toont direct de resterende hoeveelheid in kilogram, de dagelijkse consumptie per afdeling en het aantal dagen dat u nog heeft om bij te bestellen.</div>
+      </div>
+      <div class="demo-feat-row">
+        <div class="demo-feat-num">02</div>
+        <div class="demo-feat-head">Taken afvinken — met medewerker</div>
+        <div class="demo-feat-body">Elke taak heeft een eigenaar. U ziet wie wat heeft afgevinkt en wat er nog open staat. De badge in de navigatie telt mee zodra u aanvinkt.</div>
+      </div>
+      <div class="demo-feat-row">
+        <div class="demo-feat-num">03</div>
+        <div class="demo-feat-head">Slachtagenda per ronde</div>
+        <div class="demo-feat-body">Ronde 1-2026 wordt over 14 dagen geslacht. Dat staat rood gemarkeerd op het dashboard — zodat u nooit verrast wordt door een slachtdatum die nadert.</div>
+      </div>
+      <div class="demo-feat-row">
+        <div class="demo-feat-num">04</div>
+        <div class="demo-feat-head">Medicatie &amp; vrijgavedatum</div>
+        <div class="demo-feat-body">Groep Afd 3 heeft Draxxin gekregen. De wachttijd en de vrijgavedatum staan direct vermeld — zodat u nooit per ongeluk te vroeg levert.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ──────────────────────────────────────────── -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="eyebrow bare" style="color:rgba(245,241,232,.4);justify-content:center;margin-bottom:24px" data-anim>Klaar om te proberen?</div>
+    <h2 data-anim>Stap erin.<br>Geen aanmelding <em>nodig</em>.</h2>
+    <p data-anim>Verken de app met échte data — of vraag een persoonlijke demo aan waarbij we uw eigen stal inrichten.</p>
+    <div class="hero-cta-row" style="justify-content:center" data-anim>
+      <a href="demo-app.html" class="btn btn-primary btn-lg" id="open-demo-btn-2">Open de demo <svg><use href="#i-arrow"/></svg></a>
+      <a href="contact.html" class="btn btn-secondary btn-lg">Persoonlijke demo</a>
+    </div>
+  </div>
+</section>
+
+<div data-footer></div>
+
+<!-- ── EMAIL GATE MODAL ───────────────────────────────────── -->
+<div id="demo-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+  <div class="demo-gate-modal">
+    <div class="demo-gate-mark">S</div>
+    <div class="demo-gate-title" id="gate-title">Eén stap nog.</div>
+    <div class="demo-gate-sub">Vul uw e-mailadres in en start direct de demo. Geen wachtwoord — geen verplichtingen.</div>
+    <form id="demo-gate-form" novalidate>
+      <label class="demo-gate-label" for="demo-gate-email">E-mailadres</label>
+      <input id="demo-gate-email" class="demo-gate-input" type="email" required
+        placeholder="naam@bedrijf.nl" autocomplete="email">
+      <div id="demo-gate-error" class="demo-gate-error" role="alert"></div>
+      <button type="submit" id="demo-gate-btn" class="btn btn-primary demo-gate-submit">
+        Open demo <svg><use href="#i-arrow"/></svg>
+      </button>
+      <button type="button" class="demo-gate-cancel" onclick="closeDemoGate()">Annuleren</button>
+    </form>
+  </div>
+</div>
+
+<script src="site.js?v=2"></script>
+<script>
+(function () {
+  // Intercept all demo links
+  document.querySelectorAll('#open-demo-btn, #open-demo-btn-2').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openDemoGate();
+    });
+  });
+
+  window.openDemoGate = function() {
+    var gate = document.getElementById('demo-gate');
+    gate.style.display = 'flex';
+    requestAnimationFrame(function() {
+      document.getElementById('demo-gate-email').focus();
+    });
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeDemoGate = function() {
+    document.getElementById('demo-gate').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+
+  // Close on backdrop click
+  document.getElementById('demo-gate').addEventListener('click', function(e) {
+    if (e.target === this) closeDemoGate();
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDemoGate();
+  });
+
+  document.getElementById('demo-gate-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    var email = document.getElementById('demo-gate-email').value.trim();
+    var btn = document.getElementById('demo-gate-btn');
+    var errEl = document.getElementById('demo-gate-error');
+    errEl.style.display = 'none';
+
+    if (!email) {
+      errEl.textContent = 'Vul een e-mailadres in.';
+      errEl.style.display = 'block';
+      return;
+    }
+
+    btn.textContent = 'Bezig…';
+    btn.disabled = true;
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'eb0ae56d-5551-4cea-ad42-a2b778645ca0',
+          subject: 'Demo geopend — ' + email,
+          email: email,
+          message: 'Iemand heeft de interactieve demo geopend: ' + email
+        })
+      });
+    } catch (_) { /* stille fout — redirect altijd */ }
+
+    document.body.style.overflow = '';
+    window.location.href = 'demo-app.html';
+  });
+})();
+</script>
 </body>
 </html>

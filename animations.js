@@ -24,6 +24,33 @@
     intro.addEventListener('click', () => { clearTimeout(timer); dismiss(); });
   }
 
+  /* ── 0b. Hamburger mobiel menu ──────────────────────────────── */
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'Menu sluiten' : 'Menu openen');
+    });
+    // Sluit menu bij klikken op een link
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-label', 'Menu openen');
+      });
+    });
+    // Sluit menu bij klikken buiten het menu
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-label', 'Menu openen');
+      }
+    });
+  }
+
   /* ── 1. Nav: schaduw bij scrollen ─────────────────────────── */
   const nav = document.querySelector('.nav');
   if (nav) {
