@@ -534,6 +534,30 @@ h1 em, h2 em, .display em { font-style: italic; font-weight: 400; color: var(--m
   display: flex; flex-direction: column; justify-content: center;
 }
 
+/* ── NIEUW (extra kaartbreedtes + mini-visuals) ─────────── */
+.feat.half { grid-column: span 6; }
+.feat.kwart { grid-column: span 3; }
+a.feat { color: inherit; text-decoration: none; }
+.feat .feat-more { margin-top: auto; font-size: 13px; font-weight: 600; color: var(--moss); display: inline-flex; align-items: center; gap: 6px; }
+.feat .feat-more svg { width: 14px; height: 14px; }
+.badge-nieuw { display: inline-block; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 3px 8px; border-radius: 99px; align-self: flex-start; }
+.mini-bon { display: flex; flex-direction: column; gap: 8px; }
+.mini-bon-kop { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--mute); padding-bottom: 8px; border-bottom: 1px dashed var(--line-2); }
+.mini-bon-regel { display: grid; grid-template-columns: 34px 1fr auto; gap: 10px; align-items: center; font-size: 13px; }
+.mini-bon-regel .silo { font-family: var(--mono); font-size: 11px; font-weight: 500; background: var(--moss-soft); color: var(--moss); border-radius: 5px; text-align: center; padding: 2px 0; }
+.mini-bon-regel .kg { font-family: var(--mono); font-size: 12px; }
+.mini-bon-ok { font-size: 12px; color: var(--moss); display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+.mini-bon-ok svg { width: 13px; height: 13px; }
+.mini-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mini-kpis .v { font-family: var(--display); font-size: 24px; letter-spacing: -.03em; }
+.mini-kpis .v small { color: var(--mute); font-size: 14px; }
+.mini-kpis .l { font-family: var(--mono); font-size: 10px; text-transform: uppercase; color: var(--mute); letter-spacing: .06em; margin-top: 2px; }
+.kw-balk { display: flex; height: 8px; border-radius: 99px; overflow: hidden; margin: 14px 0 8px; background: var(--line); }
+.kw-leg { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--mute); }
+.kw-leg i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 5px; }
+.mini-wijz { font-family: var(--mono); font-size: 12px; color: var(--accent); line-height: 1.7; }
+@media (max-width: 1100px) { .feat.kwart { grid-column: span 6; } }
+
 /* ── STEPS ──────────────────────────────────────────────── */
 .steps-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;
@@ -745,7 +769,8 @@ footer {
   .pains { grid-template-columns: 1fr; }
   .pain:nth-child(odd) { padding-right: 0; border-right: none; }
   .pain:nth-child(even) { padding-left: 0; }
-  .feat, .feat.wide { grid-column: span 12; }
+  .feat, .feat.wide, .feat.half, .feat.kwart { grid-column: span 12; }
+  .mini-kpis { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: 1fr; }
   .pricing { grid-template-columns: 1fr; gap: 32px; }
   .lang-row { grid-template-columns: 50px 1fr auto; }

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Functies — Stalbeheer | Varkenshouderij Beheer App</title>
-<meta name="description" content="Voerplanning, silo-beheer, dagelijkse taken, medicatie en wachttijden, groepen en rondes. Alle functies van Stalbeheer voor Nederlandse varkenshouders op een rij.">
+<meta name="description" content="Voerplanning, silo-beheer, voerbon scannen, slachtresultaten, dagelijkse taken, medicatie en wachttijden, groepen en rondes. Alle functies van Stalbeheer voor Nederlandse varkenshouders op een rij.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://stalbeheer.com/functies.html">
 <meta property="og:type" content="website">
@@ -13,7 +13,7 @@
 <meta property="og:description" content="Voerplanning, silo-beheer, dagelijkse taken, medicatie en wachttijden — alles in één app voor varkenshouders.">
 <meta property="og:locale" content="nl_NL">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 <div data-nav></div>
@@ -84,7 +84,86 @@
   </div>
 </section>
 
-<section class="section on-paper">
+<section class="section on-paper" id="nieuw">
+  <div class="section-inner">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" data-anim>Nieuw in Stalbeheer</div>
+        <h2 data-anim>Minder overtypen.<br><em>Meer zien.</em></h2>
+      </div>
+      <p class="intro" data-anim>
+        Bonnen, slachtresultaten en tellingen komen nu vanzelf in de app. U controleert en bevestigt — de app rekent en legt de verbanden.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feat wide" data-anim>
+        <div class="feat-icon"><svg><use href="#i-camera"/></svg></div>
+        <h3>Voerbon scannen</h3>
+        <p>Maak een foto van de afleverbon. De app leest leverancier, bonnummer en per silo de geleverde kilo's, koppelt alles aan de openstaande bestelling en werkt de voorraad bij. U ziet eerst wat er gelezen is en bevestigt zelf. Dezelfde bon twee keer inlezen? Dat ziet de app.</p>
+        <div class="feat-visual">
+          <div class="mini-bon">
+            <div class="mini-bon-kop"><span>Afleverbon · 4 nov</span><span>bon B1095…002</span></div>
+            <div class="mini-bon-regel"><span class="silo">S2</span><span>Groeikorrel</span><span class="kg">5.998 kg</span></div>
+            <div class="mini-bon-regel"><span class="silo">S7</span><span>Groeikorrel</span><span class="kg">3.982 kg</span></div>
+            <div class="mini-bon-ok"><svg><use href="#i-check"/></svg>Gekoppeld aan bestelling van 2 nov · voorraad bijgewerkt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat" data-anim>
+        <div class="feat-icon"><svg><use href="#i-calendar"/></svg></div>
+        <h3>Wanneer bestellen</h3>
+        <p>Per silo een besteldatum. De app rekent vooruit met het oplopende verbruik van groeiende varkens en leert de levertijd van uw eigen leveringen. Moeten twee silo's met hetzelfde voer kort na elkaar? Dan stelt hij voor ze samen te bestellen.</p>
+        <div class="feat-visual" style="min-height:0">
+          <div class="silo-mini">
+            <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 4 · Groei</span><span class="silo-days" style="color:var(--danger)">vandaag bestellen</span></div><div class="silo-bar"><div class="silo-bar-fill crit" style="width:18%"></div></div></div>
+            <div class="silo-row"><div class="silo-row-top"><span class="silo-name">Silo 3 · Groei</span><span class="silo-days">vóór do 12 nov</span></div><div class="silo-bar"><div class="silo-bar-fill warn" style="width:42%"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat" data-anim>
+        <div class="feat-icon"><svg><use href="#i-flask"/></svg></div>
+        <h3>Voerproducten</h3>
+        <p>De productinformatie onderaan de bon wordt meegelezen: analyse, toevoegingen, samenstelling en CO₂ per kilo. Past de leverancier het recept aan, dan ziet u precies wat er veranderde.</p>
+        <div class="feat-visual" style="min-height:0">
+          <div class="mini-wijz">Groei ko · recept gewijzigd<br>Lysine 10,4 → 10,0 g/kg<br>Grondstof erbij: eierschalen<br>CO₂ 870 → 845 g/kg</div>
+        </div>
+      </div>
+
+      <div class="feat wide" data-anim>
+        <div class="feat-icon"><svg><use href="#i-sms"/></svg></div>
+        <h3>Slachtresultaten — per groep en per biggenleverancier</h3>
+        <p>Plak de SMS van de slachterij in de app. Vleespercentage, geslacht gewicht, spek, spier en kwaliteitsklasse komen bij de juiste aflevering. Zo ziet u welke groep en welke biggenleverancier het beste resultaat geeft — en, samen met de voergegevens, wat het voer daarin doet.</p>
+        <div class="feat-visual">
+          <div class="mini-kpis">
+            <div><div class="v">60,4<small>%</small></div><div class="l">Vlees</div></div>
+            <div><div class="v">101,1<small>kg</small></div><div class="l">Geslacht</div></div>
+            <div><div class="v">12,0<small>mm</small></div><div class="l">Spek</div></div>
+            <div><div class="v">70,8<small>mm</small></div><div class="l">Spier</div></div>
+          </div>
+          <div class="kw-balk"><span style="width:20%;background:var(--moss)"></span><span style="width:77%;background:#9DB59F"></span><span style="width:3%;background:var(--accent)"></span></div>
+          <div class="kw-leg"><span><i style="background:var(--moss)"></i>AA top</span><span><i style="background:#9DB59F"></i>A goed</span><span><i style="background:var(--accent)"></i>lager</span></div>
+        </div>
+      </div>
+
+      <div class="feat half" data-anim>
+        <div class="feat-icon"><svg><use href="#i-scale"/></svg></div>
+        <h3>Telling en saldokaart die kloppen</h3>
+        <p>Tel een afdeling en de app zet in één keer alles recht: tekort als sterfte, overschot als verplaatsing of aanvoer — de saldokaart gaat automatisch mee. Een controlepagina laat zien waar een verschil vandaan komt.</p>
+      </div>
+
+      <div class="feat half" data-anim>
+        <div class="feat-icon"><svg><use href="#i-laptop"/></svg></div>
+        <h3>Ook op de laptop</h3>
+        <p>In de stal werkt u op de telefoon, op kantoor heeft u het overzicht: silo-dagen, sterfte per week, bezetting per afdeling en de afleverplanning in grafieken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="section-inner">
     <div class="section-head center">
       <div class="eyebrow" data-anim>Hoe het werkt</div>
@@ -110,6 +189,6 @@
 </section>
 
 <div data-footer></div>
-<script src="site.js?v=2"></script>
+<script src="site.js?v=3"></script>
 </body>
 </html>
